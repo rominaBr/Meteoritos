@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/thrusterFire.ogg-5b14d8545b9a9cf5b51a4acc5bc6f174.oggstr"
+
+[deps]
+
+source_file="res://Juegos/Naves/Player/thrusterFire.ogg"
+dest_files=[ "res://.import/thrusterFire.ogg-5b14d8545b9a9cf5b51a4acc5bc6f174.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
