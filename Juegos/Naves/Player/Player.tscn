@@ -41,10 +41,14 @@ position = Vector2( 0, 33 )
 position = Vector2( 42, 0 )
 
 [node name="EstelaPuntoInicio" type="Position2D" parent="."]
+position = Vector2( -9, 0 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Trail2D" parent="EstelaPuntoInicio" instance=ExtResource( 6 )]
-position = Vector2( 5, 0 )
-points = PoolVector2Array( 0, 0, 60, 0 )
+scale = Vector2( 1, 0.89 )
+points = PoolVector2Array( 0, 0, 58, 0, 83, 0 )
 width = 50.0
 is_emitting = true
 lifetime = 0.6
