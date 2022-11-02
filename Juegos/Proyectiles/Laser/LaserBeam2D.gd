@@ -10,12 +10,12 @@ export var cast_speed := 7000.0
 export var max_length := 1400.0
 # Base duration of the tween animation in seconds.
 export var growth_time := 0.1
-
+export var radio_danio: float = 4.0
 # If `true`, the laser is firing.
 # It plays appearing and disappearing animations when it's not animating.
 # See `appear()` and `disappear()` for more information.
 var is_casting := false setget set_is_casting
-var radio_danio: float
+
 
 onready var fill := $FillLine2D
 onready var tween := $Tween
