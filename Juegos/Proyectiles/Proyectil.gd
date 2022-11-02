@@ -1,9 +1,12 @@
 class_name Proyectil
 extends Area2D
 
+## Atributos Export
+export var danio:float = 2.0
+
 ## Atributos
 var velocidad:Vector2 = Vector2.ZERO
-var danio:float = 2.0
+
 
 ## Métodos
 func crear(pos: Vector2, dir: float, vel: float, danio_p: int) -> void:
@@ -16,7 +19,7 @@ func _physics_process(delta: float) -> void:
 
 ## Métodos custom
 func daniar(otro_cuerpo: CollisionObject2D) -> void:	
-	if otro_cuerpo.has_method("recibir_danio"):		
+	if otro_cuerpo.has_method("recibir_danio"):				
 		otro_cuerpo.recibir_danio(danio)		
 	queue_free()	
 
