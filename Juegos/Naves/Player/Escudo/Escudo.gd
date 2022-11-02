@@ -40,6 +40,7 @@ func desactivar() -> void:
 	esta_activado = false
 	controlar_colisionador(true)
 	$AnimationPlayer.play_backwards("activando")
+	$AudioStreamPlayer.stop()
 
 ## Señales Internas
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:

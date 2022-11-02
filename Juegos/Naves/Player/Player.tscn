@@ -7,7 +7,7 @@
 [ext_resource path="res://Juegos/Proyectiles/Laser/LaserBeam2D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juegos/Naves/Player/Estela/Trail2D.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juegos/Naves/Player/Motor/MotorSFX.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Juegos/Naves/Player/Escudo.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Juegos/Naves/Player/Escudo/Escudo.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.0
@@ -33,6 +33,7 @@ data = PoolByteArray( 79, 103, 103, 83, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 166, 53, 0
 
 [node name="Player" type="RigidBody2D"]
 z_index = 50
+z_as_relative = false
 collision_layer = 6
 physics_material_override = ExtResource( 2 )
 gravity_scale = 0.0
