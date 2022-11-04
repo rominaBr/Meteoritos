@@ -122,9 +122,14 @@ func recibir_danio(danio: float) -> void:
 		destruir()
 	sonido_danio.play()		
 
+func destruir() -> void:
+	controlador_estados(ESTADO.MUERTO)
+
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "spawn":
 		controlador_estados(ESTADO.VIVO)
 
-func destruir() -> void:
-	controlador_estados(ESTADO.MUERTO)
+func _on_body_entered(body: Node) -> void:
+	if body is Meteorito:
+		body.destruir()
+		destruir()
