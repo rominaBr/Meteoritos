@@ -22,7 +22,7 @@ onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var sonido_danio:AudioStreamPlayer = $ImpactoSFX
-onready var escudo:Escudo = $Escudo
+onready var escudo = $Escudo 
 
 ## Metodos
 func _ready() -> void:

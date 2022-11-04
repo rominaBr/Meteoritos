@@ -3,13 +3,15 @@
 [ext_resource path="res://Juegos/Proyectiles/Proyectil.tscn" type="PackedScene" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 6.99994
-height = 34.0001
+radius = 7.00004
+height = 28.0
 
 [node name="ProyectilPlayer" instance=ExtResource( 1 )]
 z_index = 40
-collision_layer = 8
-collision_mask = 6
+collision_layer = 9
+danio = 3.0
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
