@@ -9,6 +9,7 @@ var spawners:Array
 
 ## Métodos
 func _ready() -> void:
+	$AnimationPlayer.play("advertencia")	
 	almacenar_spawners()
 
 ## Métodos Custom	
@@ -25,6 +26,7 @@ func spawner_aleatorio() -> int:
 func _on_SpawnTimer_timeout() -> void:	
 	if cantidad_meteoritos == 0:
 		$SpawnTimer.stop()
+		$AnimationPlayer.play("default")
 		return		
 	spawners[spawner_aleatorio()].spawnear_meteorito()
 	cantidad_meteoritos -= 1
