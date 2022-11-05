@@ -44,7 +44,7 @@ func recibir_danio(danio:float) -> void:
 		
 func destruir() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
-	Eventos.emit_signal("meteorito_destruido", global_position)
+	Eventos.emit_signal("meteorito_destruido", global_position)	
 	queue_free()
 	
 func aleatorizar_velocidad() -> float:
