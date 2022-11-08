@@ -297,15 +297,16 @@ autostart = true
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
 modulate = Color( 0, 0, 0, 0 )
-margin_right = 946.0
-margin_bottom = 267.0
+margin_left = 3.0
+margin_right = 1392.0
+margin_bottom = 917.0
 color = Color( 0.862745, 0.0627451, 0.0627451, 1 )
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
-margin_left = 295.0
-margin_top = 127.0
-margin_right = 634.0
-margin_bottom = 166.0
+margin_left = 536.0
+margin_top = 388.0
+margin_right = 875.0
+margin_bottom = 427.0
 custom_fonts/font = SubResource( 9 )
 text = "ADVERTENCIA:
 LLUVIA DE METEORITOS INMINENTE"
