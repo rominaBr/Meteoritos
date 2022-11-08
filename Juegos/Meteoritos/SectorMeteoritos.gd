@@ -8,6 +8,11 @@ export var intervalo_spawn:float = 1.2
 ## Atributos
 var spawners:Array
 
+## Constructor
+func crear(pos:Vector2, meteoritos:int) -> void:
+	global_position = pos
+	cantidad_meteoritos = meteoritos
+
 ## Métodos
 func _ready() -> void:
 	$AnimationPlayer.play("default")

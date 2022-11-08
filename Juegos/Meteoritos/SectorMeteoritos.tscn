@@ -132,6 +132,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("SpawnTimer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+} ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "default"
@@ -290,7 +304,6 @@ position = Vector2( 1150, 360 )
 position = Vector2( 1150, 720 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
