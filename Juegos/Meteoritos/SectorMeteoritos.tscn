@@ -151,7 +151,7 @@ tracks/4/keys = {
 resource_name = "default"
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -163,7 +163,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/path = NodePath("CanvasLayer/ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -176,15 +176,18 @@ tracks/1/keys = {
 }
 
 [node name="SectorMeteoritos" type="Node2D"]
+z_as_relative = false
 script = ExtResource( 2 )
 
 [node name="BordesNavePlayer" type="Node2D" parent="."]
+z_as_relative = false
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="BordeIzquierdo" type="StaticBody2D" parent="BordesNavePlayer"]
 position = Vector2( -960, 4 )
+z_as_relative = false
 collision_layer = 0
 __meta__ = {
 "_edit_group_": true
@@ -192,10 +195,12 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BordesNavePlayer/BordeIzquierdo"]
 position = Vector2( 50, 50 )
+z_as_relative = false
 shape = SubResource( 1 )
 
 [node name="BordeDerecho" type="StaticBody2D" parent="BordesNavePlayer"]
 position = Vector2( 960, 4 )
+z_as_relative = false
 collision_layer = 0
 __meta__ = {
 "_edit_group_": true
@@ -206,6 +211,7 @@ shape = SubResource( 2 )
 
 [node name="BordeSuperior" type="StaticBody2D" parent="BordesNavePlayer"]
 position = Vector2( 0, -540 )
+z_as_relative = false
 collision_layer = 0
 __meta__ = {
 "_edit_group_": true
@@ -216,6 +222,7 @@ shape = SubResource( 3 )
 
 [node name="BordeInferior" type="StaticBody2D" parent="BordesNavePlayer"]
 position = Vector2( 0, 540 )
+z_as_relative = false
 collision_layer = 0
 __meta__ = {
 "_edit_group_": true
@@ -225,6 +232,7 @@ __meta__ = {
 shape = SubResource( 4 )
 
 [node name="DetectorFueraZona" type="Node2D" parent="."]
+z_as_relative = false
 __meta__ = {
 "_edit_group_": true
 }
@@ -237,18 +245,21 @@ shape = SubResource( 5 )
 
 [node name="DetectorDerecho" type="Area2D" parent="DetectorFueraZona"]
 position = Vector2( 1400, 0 )
+z_as_relative = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorFueraZona/DetectorDerecho"]
 shape = SubResource( 6 )
 
 [node name="DetectorSuperior" type="Area2D" parent="DetectorFueraZona"]
 position = Vector2( 0, -900 )
+z_as_relative = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorFueraZona/DetectorSuperior"]
 shape = SubResource( 7 )
 
 [node name="DetectorInferior" type="Area2D" parent="DetectorFueraZona"]
 position = Vector2( 0, 900 )
+z_as_relative = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorFueraZona/DetectorInferior"]
 shape = SubResource( 8 )
@@ -310,16 +321,24 @@ position = Vector2( 1150, 720 )
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
 modulate = Color( 0, 0, 0, 0 )
-margin_left = 3.0
-margin_right = 1392.0
-margin_bottom = 917.0
+anchor_top = 0.003
+anchor_right = 0.007
+anchor_bottom = 0.003
+margin_left = 4.0
+margin_top = -0.24
+margin_right = 1901.56
+margin_bottom = 1084.76
 color = Color( 0.862745, 0.0627451, 0.0627451, 1 )
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
-margin_left = 536.0
-margin_top = 388.0
-margin_right = 875.0
-margin_bottom = 427.0
+anchor_left = 0.496
+anchor_top = 0.527
+anchor_right = 0.496
+anchor_bottom = 0.527
+margin_left = -339.856
+margin_top = -133.795
+margin_right = 339.144
+margin_bottom = 134.205
 custom_fonts/font = SubResource( 9 )
 text = "ADVERTENCIA:
 LLUVIA DE METEORITOS INMINENTE"
