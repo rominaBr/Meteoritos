@@ -39,3 +39,5 @@ position = Vector2( -1, 0 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -119, 15 )
 texture = ExtResource( 7 )
+
+[connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

@@ -36,9 +36,7 @@ func conectar_seniales_detectores() -> void:
 
 ## Señales internas
 func _on_SpawnTimer_timeout() -> void:	
-	print("Cantidad ",cantidad_meteoritos)
-	if cantidad_meteoritos <= 0:
-		print("terminé")
+	if cantidad_meteoritos <= 0:		
 		$SpawnTimer.stop()
 		$AnimationPlayer.play("default")
 		return		

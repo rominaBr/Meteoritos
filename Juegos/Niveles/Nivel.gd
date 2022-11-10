@@ -54,27 +54,28 @@ func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void
 	transicion_camaras(
 		$Player/CamaraPlayer.global_position,
 		camara_nivel.global_position,
-		camara_nivel
+		camara_nivel,
+		tiempo_transicion_camara
 	)
 
 func controlar_meteoritos_restantes() -> void:
-	meteoritos_totales -= 1
-	print(meteoritos_totales)	
+	meteoritos_totales -= 1	
 	if meteoritos_totales == 0:
 		contenedor_sector_meteoritos.get_child(0).queue_free()
 		transicion_camaras(
 			camara_nivel.global_position,
 			$Player/CamaraPlayer.global_position,
-			$Player/CamaraPlayer
+			$Player/CamaraPlayer,
+			tiempo_transicion_camara * 0.10
 		)
 
-func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D) -> void:
+func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, tiempo_transicion:float) -> void:
 	$TweenCamara.interpolate_property(
 		camara_actual,
 		"global_position",
 		desde,
 		hasta,
-		tiempo_transicion_camara,
+		tiempo_transicion,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
@@ -114,3 +115,8 @@ func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_pel
 	elif tipo_peligro == "Enemigo":
 		pass
 
+
+
+func _on_TweenCamara_tween_completed(object: Object, key: NodePath) -> void:
+	if object.name == "CamaraPlayer":
+		object.global_position = $Player.global_position
