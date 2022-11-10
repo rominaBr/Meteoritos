@@ -11,7 +11,7 @@ var spawners:Array
 ## Constructor
 func crear(pos:Vector2, meteoritos:int) -> void:
 	global_position = pos
-	cantidad_meteoritos = meteoritos
+	cantidad_meteoritos = meteoritos	
 
 ## Métodos
 func _ready() -> void:
@@ -23,7 +23,7 @@ func _ready() -> void:
 ## Métodos Custom	
 func almacenar_spawners() -> void:
 	$AnimationPlayer.play("advertencia")	
-	for spawner in $Spawners.get_children():		
+	for spawner in $Spawners.get_children():			
 		spawners.append(spawner)
 		
 func spawner_aleatorio() -> int:
@@ -36,12 +36,14 @@ func conectar_seniales_detectores() -> void:
 
 ## Señales internas
 func _on_SpawnTimer_timeout() -> void:	
-	if cantidad_meteoritos == 0:
+	print("Cantidad ",cantidad_meteoritos)
+	if cantidad_meteoritos <= 0:
+		print("terminé")
 		$SpawnTimer.stop()
 		$AnimationPlayer.play("default")
 		return		
-	spawners[spawner_aleatorio()].spawnear_meteorito()
+	spawners[spawner_aleatorio()].spawnear_meteorito()	
 	cantidad_meteoritos -= 1
 
-func _on_detector_body_entered(body: Node) -> void:	
+func _on_detector_body_entered(body: Node) -> void:		
 	body.set_esta_en_sector(false)

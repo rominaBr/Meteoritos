@@ -545,6 +545,18 @@ tracks/15/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("impactoSFX:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Meteorito" type="RigidBody2D"]
 z_index = 30
@@ -577,9 +589,7 @@ anims/impacto = SubResource( 3 )
 
 [node name="SpriteDiminuto1" type="Sprite" parent="."]
 visible = false
-position = Vector2( 69, -47 )
-rotation = 0.750492
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 3, 3 )
 z_index = 1
 texture = ExtResource( 5 )
 

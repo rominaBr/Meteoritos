@@ -21,6 +21,7 @@ var meteoritos_totales:int = 0
 func _ready() -> void:
 	conectar_seniales()
 	crear_contenedores()
+	
 
 ## Medodos custom
 func conectar_seniales() -> void:
@@ -28,7 +29,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
 	Eventos.connect("spawn_meteorito", self, "_on_spawn_meteoritos")
 	Eventos.connect("meteorito_destruido", self, "_on_meteorito_destruido")
-	Eventos.connect("nave_en_sector_peligroso", self, "_on_nave_en_sector_peligro")
+	Eventos.connect("nave_en_sector_peligroso", self, "_on_nave_en_sector_peligro")	
 	
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
@@ -36,20 +37,20 @@ func crear_contenedores() -> void:
 	add_child(contenedor_proyectiles)	
 	
 	contenedor_meteoritos = Node.new()
-	contenedor_meteoritos.name = "ContenedorMeteoritos"
+	contenedor_meteoritos.name = "ContenedorMeteoritos"	
 	add_child(contenedor_meteoritos)
 	
 	contenedor_sector_meteoritos = Node.new()
 	contenedor_sector_meteoritos.name = "ContenedorSectorMeteoritos"
 	add_child(contenedor_sector_meteoritos)
 
-func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void:
-	meteoritos_totales = numero_peligros
-	var new_sector_meteoritos:SectorMeteoritos = sector_meteoritos.instance()
+func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void:	
+	meteoritos_totales = numero_peligros	
+	var new_sector_meteoritos:SectorMeteoritos = sector_meteoritos.instance()	
 	new_sector_meteoritos.crear(centro_camara, numero_peligros)
 	camara_nivel.global_position = centro_camara
 	camara_nivel.current = true
-	contenedor_meteoritos.add_child(new_sector_meteoritos)
+	contenedor_sector_meteoritos.add_child(new_sector_meteoritos)
 	transicion_camaras(
 		$Player/CamaraPlayer.global_position,
 		camara_nivel.global_position,
@@ -58,8 +59,9 @@ func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void
 
 func controlar_meteoritos_restantes() -> void:
 	meteoritos_totales -= 1
-	print(meteoritos_totales)
+	print(meteoritos_totales)	
 	if meteoritos_totales == 0:
+		contenedor_sector_meteoritos.get_child(0).queue_free()
 		transicion_camaras(
 			camara_nivel.global_position,
 			$Player/CamaraPlayer.global_position,
