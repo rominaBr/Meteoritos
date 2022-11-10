@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Camera2D",
+"class": "CamaraJuego",
+"language": "GDScript",
+"path": "res://Juegos/Niveles/CamaraJuego.gd"
+}, {
+"base": "CamaraJuego",
 "class": "CamaraPlayer",
 "language": "GDScript",
 "path": "res://Juegos/Naves/Player/CamaraPlayer.gd"
@@ -75,6 +80,7 @@ _global_script_classes=[ {
 "path": "res://Juegos/Meteoritos/SectorMeteoritos.gd"
 } ]
 _global_script_class_icons={
+"CamaraJuego": "",
 "CamaraPlayer": "",
 "Canion": "",
 "Escudo": "",
