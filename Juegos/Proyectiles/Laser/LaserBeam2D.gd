@@ -80,6 +80,9 @@ func cast_beam(delta:float) -> void:
 		return
 	energia += radio_desgaste * delta
 	
+	
+	
+	
 func appear() -> void:
 	if tween.is_active():
 		tween.stop_all()		
