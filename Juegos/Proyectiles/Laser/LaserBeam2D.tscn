@@ -72,6 +72,8 @@ max_length = 1200.0
 
 [node name="FillLine2D" type="Line2D" parent="."]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( 6.58333, 0 )
+scale = Vector2( 1.65833, 1 )
 points = PoolVector2Array( 0, 0, 100, 0 )
 default_color = Color( 0.301961, 0.65098, 1, 1 )
 texture_mode = 2

@@ -13,6 +13,7 @@ onready var contenedor_proyectiles:Node
 onready var contenedor_meteoritos:Node
 onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
+onready var estacion:AnimationPlayer = $ContenedorEstaciones/EstacionRecarga/AnimationPlayer
 
 ## Atributos
 var meteoritos_totales:int = 0
@@ -21,7 +22,7 @@ var meteoritos_totales:int = 0
 func _ready() -> void:
 	conectar_seniales()
 	crear_contenedores()
-	
+	estacion.play("activado")
 
 ## Medodos custom
 func conectar_seniales() -> void:
@@ -59,6 +60,14 @@ func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void
 		tiempo_transicion_camara
 	)
 
+func crear_posicion_aleatoria(rango_horizontal: float, rango_vertical:float) -> Vector2:
+	randomize()
+	var rand_x = rand_range(-rango_horizontal, rango_horizontal)
+	var rand_y = rand_range(-rango_vertical, rango_vertical)
+	
+	return Vector2 (rand_x, rand_y)
+	
+
 func controlar_meteoritos_restantes() -> void:
 	meteoritos_totales -= 1	
 	if meteoritos_totales == 0:
@@ -89,12 +98,20 @@ func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, ti
 
 ## Conexión señales externas
 func _on_disparo(proyectil:Proyectil) -> void:
-	add_child(proyectil)
+	contenedor_proyectiles.add_child(proyectil)
 	
-func _on_nave_destruida(posicion: Vector2, num_explosiones) -> void:
-	for i in range(num_explosiones):
+func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void:
+	if nave is Player:
+		transicion_camaras(
+			posicion,
+			posicion + crear_posicion_aleatoria(-200.0, 200.0),
+			camara_nivel,
+			tiempo_transicion_camara
+		)
+	
+	for _i in range(num_explosiones):
 		var new_explosion:Node2D = explosion.instance()
-		new_explosion.global_position = posicion
+		new_explosion.global_position = posicion + crear_posicion_aleatoria(100.0, 50.0)
 		add_child(new_explosion)
 		yield(get_tree().create_timer(0.6),"timeout")
 
