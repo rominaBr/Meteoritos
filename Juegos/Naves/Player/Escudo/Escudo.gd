@@ -28,7 +28,6 @@ func controlar_colisionador(esta_activado: bool) -> void:
 
 func controlar_energia(consumo:float) -> void:
 	energia += consumo
-	print("Energía escudo: ",energia)
 	if energia > energia_origina:
 		energia = energia_origina
 	elif energia <= 0.0:
