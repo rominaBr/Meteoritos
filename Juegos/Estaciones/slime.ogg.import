@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/slime.ogg-f1f9207d40863ac84f23b4e96c4ddcd8.oggstr"
+
+[deps]
+
+source_file="res://Juegos/Estaciones/slime.ogg"
+dest_files=[ "res://.import/slime.ogg-f1f9207d40863ac84f23b4e96c4ddcd8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
