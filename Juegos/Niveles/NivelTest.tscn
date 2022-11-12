@@ -42,6 +42,7 @@ script = ExtResource( 9 )
 [node name="TweenCamara" type="Tween" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 256, 256 )
