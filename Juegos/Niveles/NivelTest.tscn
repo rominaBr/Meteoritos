@@ -46,6 +46,6 @@ position = Vector2( -119, 15 )
 texture = ExtResource( 7 )
 
 [node name="EstacionRecarga" parent="." instance=ExtResource( 11 )]
-position = Vector2( -375, -197 )
+position = Vector2( -382, -420 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

@@ -13,6 +13,7 @@ onready var contenedor_proyectiles:Node
 onready var contenedor_meteoritos:Node
 onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
+onready var estacion:AnimationPlayer = $EstacionRecarga/AnimationPlayer
 
 ## Atributos
 var meteoritos_totales:int = 0
@@ -21,7 +22,7 @@ var meteoritos_totales:int = 0
 func _ready() -> void:
 	conectar_seniales()
 	crear_contenedores()
-	
+	estacion.play("activado")
 
 ## Medodos custom
 func conectar_seniales() -> void:
