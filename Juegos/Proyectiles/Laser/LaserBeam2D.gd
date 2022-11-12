@@ -6,11 +6,11 @@ extends RayCast2D
 
 # Speed at which the laser extends when first fired, in pixels per seconds.
 export var cast_speed := 7000.0
-# Maximum length of the laser in pixels.
 export var max_length := 1400.0
-# Base duration of the tween animation in seconds.
 export var growth_time := 0.1
 export var radio_danio: float = 4.0
+export var energia:float = 4.0
+export var radio_desgaste:float = -1.0
 # If `true`, the laser is firing.
 # It plays appearing and disappearing animations when it's not animating.
 # See `appear()` and `disappear()` for more information.
@@ -73,8 +73,13 @@ func cast_beam(delta:float) -> void:
 	fill.points[1] = cast_point
 	beam_particles.position = cast_point * 0.5
 	beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
-
-
+	
+	if energia <= 0.0:
+		print("Sin energía")
+		set_is_casting(false)
+		return
+	energia += radio_desgaste * delta
+	
 func appear() -> void:
 	if tween.is_active():
 		tween.stop_all()		
