@@ -114,6 +114,6 @@ position = Vector2( -382, -420 )
 position = Vector2( -400, 95 )
 
 [node name="EnemigoInterceptor" parent="." instance=ExtResource( 7 )]
-position = Vector2( -775, 305 )
+position = Vector2( -1058, 248 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

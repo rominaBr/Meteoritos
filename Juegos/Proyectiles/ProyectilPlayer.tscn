@@ -9,6 +9,7 @@ height = 28.0
 [node name="ProyectilPlayer" instance=ExtResource( 1 )]
 z_index = 40
 collision_layer = 8
+collision_mask = 6
 danio = 3.0
 
 [node name="CollisionShape2D" parent="." index="0"]
