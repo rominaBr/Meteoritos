@@ -129,6 +129,7 @@ config/icon="res://icono_juego.png"
 [autoload]
 
 Eventos="*res://Juegos/Autoloads/Eventos.gd"
+DatosJuego="*res://Juegos/Autoloads/DatosJuego.gd"
 
 [debug]
 
