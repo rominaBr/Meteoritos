@@ -9,7 +9,7 @@ export var radio_energia_entregada:float = 0.05
 onready var carga_sfx:AudioStreamPlayer = $CargaSFX
 
 ## Atributos
-var nave_player:Player = null
+var nave_player:Player= null
 var player_en_zona:bool = false
 
 ## Métodos
