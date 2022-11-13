@@ -59,6 +59,7 @@ func recibir_danio(danio: float) -> void:
 func destruir() -> void:
 	controlador_estados(ESTADO.MUERTO)
 
+## Señales internas
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "spawn":
 		controlador_estados(ESTADO.VIVO)

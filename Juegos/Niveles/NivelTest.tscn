@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juegos/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juegos/Niveles/Nivel.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Juegos/Explosiones/Explosion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juegos/Peligros/SectorDePeligro.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juegos/Meteoritos/Meteorito.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juegos/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juegos/Explosiones/ExplosionMeteorito.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juegos/Niveles/CamaraJuego.gd" type="Script" id=9]
 [ext_resource path="res://Juegos/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=10]
@@ -111,5 +112,8 @@ position = Vector2( -382, -420 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -400, 95 )
+
+[node name="EnemigoInterceptor" parent="." instance=ExtResource( 7 )]
+position = Vector2( -775, 305 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

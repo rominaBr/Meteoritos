@@ -15,6 +15,7 @@ onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
 onready var estacion:AnimationPlayer = $ContenedorEstaciones/EstacionRecarga/AnimationPlayer
 
+
 ## Atributos
 var meteoritos_totales:int = 0
 
