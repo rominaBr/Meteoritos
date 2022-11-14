@@ -22,9 +22,10 @@ height = 52.0
 radius = 30.0
 height = 76.0
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=7]
 resource_name = "default"
 length = 0.001
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites:rotation_degrees")
 tracks/0/interp = 1
@@ -32,10 +33,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ 0.0, -360.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AreaAtraccion/SpriteZonaRecarga:modulate")
@@ -47,7 +48,19 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AreaColision:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -76,7 +89,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0.933333, 0.933333, 0.933333, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AreaColision:rotation_degrees")
@@ -117,7 +130,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0.992157, 0.992157, 0.992157, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AreaColision:rotation_degrees")
@@ -142,6 +155,9 @@ orbital = ExtResource( 8 )
 modulate = Color( 0.337255, 0.337255, 0.337255, 1 )
 position = Vector2( 3, -55 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="SpriteZonaRecarga" parent="AreaAtraccion" index="0"]
+modulate = Color( 0.992188, 0.992188, 0.992188, 1 )
 
 [node name="Sprites" type="Node2D" parent="."]
 __meta__ = {
@@ -184,7 +200,7 @@ rotation = 1.5708
 shape = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 1 )
+anims/default = SubResource( 7 )
 anims/rotar_antihorario = SubResource( 2 )
 anims/rotar_horario = SubResource( 3 )
 

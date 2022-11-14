@@ -4,6 +4,10 @@ extends EnemigoBase
 ## Atributos export
 export var rango_max_ataque: float = 1400.0
 
+## Atributos onready
+onready var detector_obstaculo:RayCast2D = $DetectorObstaculo
+
+
 ## Atributos
 var base_duenia:Node2D
 
@@ -20,7 +24,7 @@ func _ready() -> void:
 ## Métodos Custom
 func rotar_hacia_player() -> void:
 	.rotar_hacia_player()
-	if dir_player.length() > rango_max_ataque:
+	if dir_player.length() > rango_max_ataque or detector_obstaculo.is_colliding():
 		canion.set_esta_disparando(false)
 	else:
 		canion.set_esta_disparando(true)
