@@ -201,7 +201,10 @@ scale = Vector2( 7.95524, 1.15009 )
 curve = SubResource( 8 )
 script = ExtResource( 10 )
 
+[node name="TimerSpawnerEnemigos" type="Timer" parent="."]
+
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="timeout" from="TimerSpawnerEnemigos" to="." method="_on_TimerSpawnerEnemigos_timeout"]
 
 [editable path="AreaAtraccion"]
