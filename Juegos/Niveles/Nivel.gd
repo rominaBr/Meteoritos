@@ -133,7 +133,7 @@ func crear_explosion(
 func _on_disparo(proyectil:Proyectil) -> void:
 	contenedor_proyectiles.add_child(proyectil)
 	
-func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void:
+func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void:	
 	if nave is Player:
 		transicion_camaras(
 			posicion,
@@ -143,6 +143,11 @@ func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void
 		)
 	
 	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
+
+func _on_base_destruida(base:BaseEnemiga, pos_partes:Array) -> void:		
+	for posicion in pos_partes:
+		crear_explosion(posicion)
+		yield(get_tree().create_timer(0.5),"timeout")
 
 func _on_spawn_meteoritos(pos_spawn: Vector2, dir_meteorito: Vector2, tamanio:float) -> void:
 	var new_meteorito:Meteorito = meteorito.instance()
@@ -166,10 +171,7 @@ func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_pel
 	elif tipo_peligro == "Enemigo":
 		crear_sector_enemigos(num_peligros)
 
-func _on_base_destruida(pos_partes:Array) -> void:	
-	for posicion in pos_partes:
-		crear_explosion(posicion)
-		yield(get_tree().create_timer(0.5),"timeout")
+
 
 func _on_TweenCamara_tween_completed(object: Object, key: NodePath) -> void:
 	if object.name == "CamaraPlayer":

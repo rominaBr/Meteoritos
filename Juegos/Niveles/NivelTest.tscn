@@ -31,23 +31,26 @@ environment = ExtResource( 3 )
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
-position = Vector2( 1038, -997 )
+position = Vector2( 1652, -1451 )
 numero_peligros = 3
 
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
-position = Vector2( -382, -420 )
+position = Vector2( 1802, 408 )
 
 [node name="ContenedorBaseEnemiga" type="Node" parent="."]
 
 [node name="BaseEnemiga" parent="ContenedorBaseEnemiga" instance=ExtResource( 13 )]
 position = Vector2( 831, -264 )
 
+[node name="BaseEnemiga2" parent="ContenedorBaseEnemiga" instance=ExtResource( 13 )]
+position = Vector2( -1540, -839 )
+
 [node name="TriggersInterceptores" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersInterceptores" instance=ExtResource( 5 )]
-position = Vector2( -1529, 109 )
+position = Vector2( -2592, 301 )
 tipo_peligro = "Enemigo"
 numero_peligros = 1
 

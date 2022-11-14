@@ -13,7 +13,7 @@ func crear(pos:Vector2, duenia:Node2D) -> void:
 	base_duenia = duenia
 
 ## Métodos
-func _ready() -> void:
+func _ready() -> void:	
 	Eventos.connect("base_destruida", self, "_on_base_destruida")
 	canion.set_esta_disparando(true)
 	
@@ -27,7 +27,7 @@ func rotar_hacia_player() -> void:
 	
 
 ## Señales externas
-func _on_base_destruida(base:Node2D, _pos) -> void:
+func _on_base_destruida(base:Node2D, _pos) -> void:	
 	if base == base_duenia:
 		destruir()
 

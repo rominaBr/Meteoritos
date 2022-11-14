@@ -5,6 +5,7 @@ extends Node2D
 export var hitpoints:float = 30.0
 export var orbital:PackedScene = null
 
+
 ## Atributos onready
 onready var impacto_sfx:AudioStreamPlayer2D = $ImpactoSFX
 
@@ -26,20 +27,22 @@ func elegir_animacion_aleatoria() -> String:
 	return lista_animacion[indice_anim_aleatoria]
 
 func recibir_danio(danio:float) -> void:
-	hitpoints -= danio	
-	if hitpoints <= 0 and not esta_destruida:
-		esta_destruida = true
+	print("base: ", hitpoints)
+	hitpoints -= danio		
+	if hitpoints <= 0 and not esta_destruida:		
+		esta_destruida = true		
 		destruir()
 		
 	impacto_sfx.play()	
 
 func destruir() -> void:
+	print("destruida")	
 	var posicion_partes = [
 		$Sprites/Sprite.global_position,
 		$Sprites/Sprite2.global_position,
 		$Sprites/Sprite3.global_position,
 		$Sprites/Sprite4.global_position
-	]
+	]	
 	Eventos.emit_signal("base_destruida", self, posicion_partes)
 	queue_free()
 
@@ -62,7 +65,7 @@ func deteccion_cuadrante() -> Vector2:
 	var angulo_player:float = rad2deg(dir_player.angle())
 	
 	if abs(angulo_player) <= 45.0:
-		return $PosionesSpawn/Este.position 
+		return $PosicionesSpawn/Este.position 
 	elif abs(angulo_player) > 135.0 and abs(angulo_player) <= 180.0:
 		return $PosicionesSpawn/Oeste.position
 	elif abs(angulo_player) > 45.0 and abs(angulo_player) <= 135.0:
