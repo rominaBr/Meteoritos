@@ -24,14 +24,22 @@ func elegir_animacion_aleatoria() -> String:
 	return lista_animacion[indice_anim_aleatoria]
 
 func recibir_danio(danio:float) -> void:
-	hitpoints -= danio
-	print("hitpoints base enemiga",hitpoints)
+	hitpoints -= danio	
 	if hitpoints <= 0 and not esta_destruida:
 		esta_destruida = true
-		queue_free()
+		destruir()
 		
 	impacto_sfx.play()	
 
+func destruir() -> void:
+	var posicion_partes = [
+		$Sprites/Sprite.global_position,
+		$Sprites/Sprite2.global_position,
+		$Sprites/Sprite3.global_position,
+		$Sprites/Sprite4.global_position
+	]
+	Eventos.emit_signal("base_destruida", posicion_partes)
+	queue_free()
 
 func _on_AreaColision_body_entered(body: Node) -> void:
 	if body.has_method("destruir"):

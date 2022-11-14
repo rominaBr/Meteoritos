@@ -39,6 +39,11 @@ numero_peligros = 3
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
 position = Vector2( -382, -420 )
 
+[node name="ContenedorBaseEnemiga" type="Node" parent="."]
+
+[node name="BaseEnemiga" parent="ContenedorBaseEnemiga" instance=ExtResource( 13 )]
+position = Vector2( 831, -264 )
+
 [node name="TriggersInterceptores" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersInterceptores" instance=ExtResource( 5 )]
@@ -122,8 +127,5 @@ texture = ExtResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 438, -773 )
-
-[node name="BaseEnemiga" parent="." instance=ExtResource( 13 )]
-position = Vector2( 831, -264 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

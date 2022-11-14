@@ -35,6 +35,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("spawn_meteorito", self, "_on_spawn_meteoritos")
 	Eventos.connect("meteorito_destruido", self, "_on_meteorito_destruido")
 	Eventos.connect("nave_en_sector_peligroso", self, "_on_nave_en_sector_peligro")	
+	Eventos.connect("base_destruida", self, "_on_base_destruida")
 	
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
@@ -111,6 +112,22 @@ func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, ti
 	camara_actual.current = true
 	$TweenCamara.start()
 
+func crear_explosion(
+	posicion:Vector2,
+	numero:int = 1,
+	intervalo:float = 0.0,
+	rangos_aleatorios:Vector2 = Vector2(0.0, 0.0)
+	) -> void:
+		for _i in range(numero):
+			var new_explosion:Node2D = explosion.instance()
+			new_explosion.global_position = posicion + crear_posicion_aleatoria(
+				rangos_aleatorios.x,
+				rangos_aleatorios.y
+			)
+			add_child(new_explosion)
+			yield(get_tree().create_timer(intervalo), "timeout")
+
+
 ## Conexión señales externas
 func _on_disparo(proyectil:Proyectil) -> void:
 	contenedor_proyectiles.add_child(proyectil)
@@ -124,11 +141,7 @@ func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void
 			tiempo_transicion_camara
 		)
 	
-	for _i in range(num_explosiones):
-		var new_explosion:Node2D = explosion.instance()
-		new_explosion.global_position = posicion + crear_posicion_aleatoria(100.0, 50.0)
-		add_child(new_explosion)
-		yield(get_tree().create_timer(0.6),"timeout")
+	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
 
 func _on_spawn_meteoritos(pos_spawn: Vector2, dir_meteorito: Vector2, tamanio:float) -> void:
 	var new_meteorito:Meteorito = meteorito.instance()
@@ -152,7 +165,10 @@ func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_pel
 	elif tipo_peligro == "Enemigo":
 		crear_sector_enemigos(num_peligros)
 
-
+func _on_base_destruida(pos_partes:Array) -> void:	
+	for posicion in pos_partes:
+		crear_explosion(posicion)
+		yield(get_tree().create_timer(0.5),"timeout")
 
 func _on_TweenCamara_tween_completed(object: Object, key: NodePath) -> void:
 	if object.name == "CamaraPlayer":
