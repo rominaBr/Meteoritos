@@ -29,7 +29,7 @@ func puede_recargar(event: InputEvent) -> bool:
 	var hay_input = event.is_action("recarga_escudo") or event.is_action("recarga_laser")
 	if hay_input and player_en_zona and energia > 0.0:
 		if !carga_sfx.playing:
-			carga_sfx.play()
+			carga_sfx.play()			
 		return true
 	
 	return false
@@ -51,4 +51,5 @@ func _on_AreaRecarga_body_entered(body: Node) -> void:
 		player_en_zona = true	
 
 func _on_AreaRecarga_body_exited(body: Node) -> void:
+	carga_sfx.stop()
 	player_en_zona = false
