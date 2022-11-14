@@ -40,7 +40,7 @@ func destruir() -> void:
 		$Sprites/Sprite3.global_position,
 		$Sprites/Sprite4.global_position
 	]
-	Eventos.emit_signal("base_destruida", posicion_partes)
+	Eventos.emit_signal("base_destruida", self, posicion_partes)
 	queue_free()
 
 func spawnear_orbital() -> void:
