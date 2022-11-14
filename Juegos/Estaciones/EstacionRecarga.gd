@@ -9,7 +9,7 @@ export var radio_energia_entregada:float = 0.05
 onready var carga_sfx:AudioStreamPlayer = $CargaSFX
 
 ## Atributos
-var nave_player:Player = null
+var nave_player:Player= null
 var player_en_zona:bool = false
 
 ## Métodos
@@ -29,7 +29,7 @@ func puede_recargar(event: InputEvent) -> bool:
 	var hay_input = event.is_action("recarga_escudo") or event.is_action("recarga_laser")
 	if hay_input and player_en_zona and energia > 0.0:
 		if !carga_sfx.playing:
-			carga_sfx.play()
+			carga_sfx.play()			
 		return true
 	
 	return false
@@ -44,13 +44,12 @@ func _on_AreaColision_body_entered(body: Node) -> void:
 	if body.has_method("destruir"):		
 		body.destruir()
 
+
 func _on_AreaRecarga_body_entered(body: Node) -> void:
 	if body is Player:
 		nave_player = body
-		player_en_zona = true
-		
-	body.set_gravity_scale(0.1)	
+		player_en_zona = true	
 
 func _on_AreaRecarga_body_exited(body: Node) -> void:
+	carga_sfx.stop()
 	player_en_zona = false
-	body.set_gravity_scale(0.0)
