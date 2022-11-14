@@ -4,7 +4,7 @@
 [ext_resource path="res://Juegos/Proyectiles/Proyectil.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 21 )
+extents = Vector2( 6, 21.5 )
 
 [node name="Proyectil" type="Area2D"]
 z_as_relative = false
@@ -13,7 +13,7 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.00136e-05, -7.79649e-05 )
+position = Vector2( 0.500005, -7.68701e-05 )
 rotation = 1.5708
 z_as_relative = false
 shape = SubResource( 1 )
@@ -29,6 +29,6 @@ texture = ExtResource( 1 )
 position = Vector2( 0, 5.96046e-08 )
 scale = Vector2( 1.8, 0.3125 )
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_Proyectil_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Proyectil_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

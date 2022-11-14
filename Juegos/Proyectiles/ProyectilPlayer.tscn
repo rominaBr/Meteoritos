@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.00004
-height = 28.0
+height = 30.9999
 
 [node name="ProyectilPlayer" instance=ExtResource( 1 )]
 z_index = 40
@@ -14,3 +14,6 @@ danio = 3.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+self_modulate = Color( 0.90625, 0.90625, 0.90625, 1 )

@@ -154,6 +154,7 @@ physics_material_override = SubResource( 6 )
 contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 5 )
+hitpoints = 15.0
 potencia_max = 800.0
 
 [node name="Sprite" parent="." index="0"]
@@ -185,12 +186,14 @@ anims/spawn = SubResource( 2 )
 texture = ExtResource( 2 )
 
 [node name="AreaDisparo" type="Area2D" parent="." index="6"]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDisparo" index="0"]
 shape = SubResource( 4 )
 
 [node name="AreaDeteccion" type="Area2D" parent="." index="7"]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" index="0"]

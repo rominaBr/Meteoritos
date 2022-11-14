@@ -10,7 +10,7 @@
 [ext_resource path="res://Juegos/Naves/Player/Escudo/Escudo.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juegos/Naves/Player/Estela/EstelaPuntoInicio.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juegos/Naves/Player/CamaraPlayer.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Juegos/Proyectiles/Proyectil.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Juegos/Proyectiles/ProyectilPlayer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 42.0119

@@ -53,6 +53,7 @@ func esta_input_activo() -> bool:
 
 func recibir_danio(danio: float) -> void:	
 	hitpoints -= danio	
+	print(hitpoints)
 	if hitpoints <= 0.0:		
 		destruir()
 	sonido_danio.play()		
