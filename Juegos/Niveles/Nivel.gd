@@ -36,6 +36,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("meteorito_destruido", self, "_on_meteorito_destruido")
 	Eventos.connect("nave_en_sector_peligroso", self, "_on_nave_en_sector_peligro")	
 	Eventos.connect("base_destruida", self, "_on_base_destruida")
+	Eventos.connect("spawn_orbital", self, "_on_spawn_orbital")
 	
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
@@ -173,3 +174,6 @@ func _on_base_destruida(pos_partes:Array) -> void:
 func _on_TweenCamara_tween_completed(object: Object, key: NodePath) -> void:
 	if object.name == "CamaraPlayer":
 		object.global_position = $Player.global_position
+
+func _on_spawn_orbital(enemigo:EnemigoOrbital) -> void:
+	contenedor_enemigos.add_child(enemigo)
