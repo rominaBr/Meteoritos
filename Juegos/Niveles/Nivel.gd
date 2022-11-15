@@ -26,6 +26,7 @@ var numero_bases_enemigas = 0
 
 ## Metodos
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	conectar_seniales()
 	crear_contenedores()
 	estacion.play("activado")
