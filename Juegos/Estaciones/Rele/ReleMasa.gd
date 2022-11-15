@@ -24,3 +24,7 @@ func _on_DetectorPlayer_body_entered(body: Node) -> void:
 	$AnimationPlayer.play("super_activado")
 	body.desactivar_controles()
 	atraer_player(body)
+
+
+func _on_Tween_tween_all_completed() -> void:
+	print("Terminé!!!")
