@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/explosion_001.ogg-b956b003e22fc224d3f38e081152a818.oggstr"
+
+[deps]
+
+source_file="res://Juegos/Estaciones/Rele/explosion_001.ogg"
+dest_files=[ "res://.import/explosion_001.ogg-b956b003e22fc224d3f38e081152a818.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
