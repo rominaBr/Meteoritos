@@ -49,7 +49,8 @@ func _on_AreaRecarga_body_entered(body: Node) -> void:
 	if body is Player:
 		nave_player = body
 		player_en_zona = true	
+		Eventos.emit_signal("detecto_zona_recarga", true)
 
 func _on_AreaRecarga_body_exited(body: Node) -> void:
-	carga_sfx.stop()
 	player_en_zona = false
+	Eventos.emit_signal("detecto_zona_recarga", false)

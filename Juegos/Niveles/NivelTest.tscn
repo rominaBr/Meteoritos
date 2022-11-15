@@ -42,7 +42,7 @@ numero_peligros = 3
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
-position = Vector2( 1802, 408 )
+position = Vector2( -834, 363 )
 
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
@@ -134,7 +134,7 @@ position = Vector2( 2118, 1023 )
 texture = ExtResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 268, -1028 )
+position = Vector2( -1293, 103 )
 
 [node name="RestartTimer" type="Timer" parent="."]
 

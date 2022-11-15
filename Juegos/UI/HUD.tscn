@@ -45,4 +45,6 @@ stretch_mode = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeCanvas"]
 anims/fade_in = SubResource( 1 )
 
-[node name="ContenedorInformacion" parent="." instance=ExtResource( 3 )]
+[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+
+[editable path="InfoZonaRecarga"]
