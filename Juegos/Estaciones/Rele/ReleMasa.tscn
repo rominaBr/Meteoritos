@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Juegos/Estaciones/Rele/Rele2.png" type="Texture" id=1]
 [ext_resource path="res://Juegos/Estaciones/Rele/Rele1.png" type="Texture" id=2]
 [ext_resource path="res://Juegos/Estaciones/Rele/explosion_000.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Juegos/Estaciones/Rele/ReleMasa.gd" type="Script" id=4]
+[ext_resource path="res://Juegos/Estaciones/Rele/explosion_001.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -22,6 +24,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=5]
 resource_name = "activado"
 length = 2.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites:rotation_degrees")
 tracks/0/interp = 1
@@ -202,6 +205,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "super_activado"
 length = 2.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites:rotation_degrees")
 tracks/0/interp = 1
@@ -260,7 +264,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("ActivadoSFX:playing")
@@ -279,17 +283,16 @@ tracks/5/keys = {
 radius = 331.001
 
 [node name="ReleMasa" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Sprites" type="Node2D" parent="."]
 scale = Vector2( 2, 2 )
 
 [node name="Sprite" type="Sprite" parent="Sprites"]
-modulate = Color( 0.997298, 0.98709, 0.999099, 1 )
 position = Vector2( 0.953045, -45.9901 )
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="Sprites"]
-modulate = Color( 0.997298, 0.98709, 0.999099, 1 )
 position = Vector2( 1.00509, 48.0311 )
 rotation = 3.14159
 texture = ExtResource( 2 )
@@ -317,3 +320,5 @@ bus = "SFX"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorPlayer"]
 position = Vector2( -1, 0 )
 shape = SubResource( 1 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
