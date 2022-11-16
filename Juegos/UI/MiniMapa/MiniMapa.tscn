@@ -19,6 +19,7 @@ margin_right = 250.0
 margin_bottom = -23.0
 rect_min_size = Vector2( 144, 81 )
 script = ExtResource( 3 )
+tiempo_visible = 10.0
 
 [node name="CuadroMiniMapa" type="NinePatchRect" parent="."]
 margin_right = 318.0
@@ -67,3 +68,10 @@ modulate = Color( 0.92549, 0.87451, 0.0941176, 1 )
 position = Vector2( 46, 99 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
+
+[node name="TweenVisibilidad" type="Tween" parent="."]
+
+[node name="TimerVisibilidad" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimerVisibilidad" to="." method="_on_TimerVisibilidad_timeout"]
