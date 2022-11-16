@@ -11,6 +11,7 @@ export (Array, PackedScene) var rutas
 ## Atributos onready
 onready var impacto_sfx:AudioStreamPlayer2D = $ImpactoSFX
 onready var timer_spawner:Timer = $TimerSpawnerEnemigos
+onready var barra_enemiga:ProgressBar = $BarraSalud
 
 ## Atributos
 var esta_destruida:bool = false
@@ -19,6 +20,7 @@ var ruta_seleccionada:Path2D
 
 ## Métodos
 func _ready() -> void:
+	barra_enemiga.set_valores(hitpoints)
 	timer_spawner.wait_time = intervalo_spawn
 	$AnimationPlayer.play(elegir_animacion_aleatoria())
 	seleccionar_ruta()
@@ -39,13 +41,13 @@ func elegir_animacion_aleatoria() -> String:
 	print(lista_animacion[indice_anim_aleatoria])	
 	return lista_animacion[indice_anim_aleatoria]
 
-func recibir_danio(danio:float) -> void:
-	print("base: ", hitpoints)
+func recibir_danio(danio:float) -> void:	
 	hitpoints -= danio		
 	if hitpoints <= 0 and not esta_destruida:		
 		esta_destruida = true		
 		destruir()
-		
+	
+	barra_enemiga.set_hitpoints_actual(hitpoints)	
 	impacto_sfx.play()	
 
 func destruir() -> void:		

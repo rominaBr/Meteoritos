@@ -18,12 +18,10 @@ onready var canion:Canion = $Canion
 onready var barra_salud:ProgressBar = $BarraSalud
 
 ## Metodos
-func _ready() -> void:
-	barra_salud.max_value = hitpoints
-	barra_salud.value = hitpoints
+func _ready() -> void:	
 	controlador_estados(estado_actual)
 	controlador_estados(ESTADO.VIVO)
-
+	barra_salud.set_valores(hitpoints)
 	
 ## Metodos Custom
 func controlador_estados(nuevo_estado:int) -> void:
