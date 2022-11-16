@@ -34,8 +34,8 @@ func puede_recargar(event: InputEvent) -> bool:
 	if hay_input and player_en_zona and energia > 0.0:
 		if !carga_sfx.playing:
 			carga_sfx.play()	
-		if Input.is_action_just_released("recarga_escudo") or Input.is_action_just_released("recarga_laser"):
-			carga_sfx.stop()			
+		##if Input.is_action_just_released("recarga_escudo") or Input.is_action_just_released("recarga_laser"):
+		##	carga_sfx.stop()			
 		return true
 		
 	return false
