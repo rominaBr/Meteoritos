@@ -48,8 +48,7 @@ func recibir_danio(danio:float) -> void:
 		
 	impacto_sfx.play()	
 
-func destruir() -> void:
-	print("destruida")	
+func destruir() -> void:		
 	var posicion_partes = [
 		$Sprites/Sprite.global_position,
 		$Sprites/Sprite2.global_position,
@@ -57,6 +56,7 @@ func destruir() -> void:
 		$Sprites/Sprite4.global_position
 	]	
 	Eventos.emit_signal("base_destruida", self, posicion_partes)
+	Eventos.emit_signal("minimapa_objeto_destruido", self)
 	queue_free()
 
 func spawnear_orbital() -> void:

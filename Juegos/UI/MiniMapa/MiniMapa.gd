@@ -18,10 +18,10 @@ onready var icono_rele:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizado
 
 ## Métodos
 func _ready() -> void:
-	set_process(false)
+	set_process(false)	
 	icono_player.position = zona_renderizado.rect_size * 0.5
 	escala_grilla = zona_renderizado.rect_size / (get_viewport_rect().size * escala_zoom)
-	
+	conectar_seniales()
 	
 func _process(delta: float) -> void:
 	if not player:
@@ -34,17 +34,18 @@ func conectar_seniales() -> void:
 	Eventos.connect("nivel_iniciado", self, "_on_nivel_iniciado")
 	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
 	Eventos.connect("minimapa_objeto_creado", self, "obtener_objetos_minimapa")
+	Eventos.connect("minimapa_objeto_destruido", self, "quitar_icono")
 	
 func _on_nivel_iniciado() -> void:
 	player = DatosJuego.get_player_actual()
-	obtener_objetos_minimap()
+	obtener_objetos_minimapa()
 	set_process(true)
 
 func _on_nave_destruida(nave: NaveBase, _posicion, _explosiones) -> void:
 	if nave is Player:
 		player = null
 	
-func obtener_objetos_minimap() -> void:
+func obtener_objetos_minimapa() -> void:
 	var objetos_en_ventana:Array = get_tree().get_nodes_in_group("minimap")
 	for objeto in objetos_en_ventana:
 		if not items_mini_mapa.has(objeto):
@@ -76,3 +77,8 @@ func modificar_posicion_iconos() -> void:
 			item_icono.scale = Vector2(0.5, 0.5)
 		else:
 			item_icono.scale = Vector2(0.3, 0.3)
+
+func quitar_icono(objeto:Node2D) -> void:
+	if objeto in items_mini_mapa:
+		items_mini_mapa[objeto].queue_free()
+		items_mini_mapa.erase(objeto)
