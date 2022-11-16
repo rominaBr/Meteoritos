@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icono_juego.png" type="Texture" id=1]
 [ext_resource path="res://Juegos/UI/HUD.gd" type="Script" id=2]
 [ext_resource path="res://Juegos/UI/ContenedorInformacion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juegos/UI/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juegos/UI/MiniMapa/MiniMapa.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -174,6 +175,8 @@ text = "ENERGÍA LÁSER"
 
 [node name="ProgressBar" parent="InfoLaser" index="3"]
 value = 100.0
+
+[node name="MiniMapa" parent="." instance=ExtResource( 5 )]
 
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]

@@ -29,9 +29,8 @@ func fade_in() -> void:
 	$FadeCanvas/AnimationPlayer.play("fade_in")
 	
 func fade_out() -> void:
-	$FadeCanvas/AnimationPlayer.play_backwards("fade_in")
-	info_zona_recarga.set_auto_ocultar(true)
-	info_meteoritos.set_auto_ocultar(true)
+	$FadeCanvas/AnimationPlayer.play_backwards("fade_in")		
+	
 
 func _on_detecto_zona_recarga(en_zona: bool) -> void:
 	if en_zona:
