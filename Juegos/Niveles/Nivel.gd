@@ -28,6 +28,7 @@ var numero_bases_enemigas = 0
 ## Metodos
 func _ready() -> void:
 	Eventos.emit_signal("nivel_iniciado")
+	Eventos.emit_signal("actualizar_tiempo", tiempo_limite)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	conectar_seniales()
 	crear_contenedores()
@@ -227,5 +228,6 @@ func _on_RestartTimer_timeout() -> void:
 
 func _on_ActualizadorTimer_timeout() -> void:
 	tiempo_limite -= 1
+	Eventos.emit_signal("actualizar_tiempo", tiempo_limite)
 	if tiempo_limite == 0:
 		destruir_nivel()

@@ -110,12 +110,14 @@ stretch_mode = 2
 anims/fade_in = SubResource( 1 )
 
 [node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
 margin_left = 12.0
 margin_top = 14.0
 margin_right = 209.0
 margin_bottom = 96.0
 
 [node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
 margin_left = 15.0
 margin_top = 968.0
 margin_right = 226.0
@@ -134,5 +136,20 @@ margin_right = 197.0
 margin_bottom = 101.0
 text = "METEORITOS RESTANTES 2"
 
+[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 1688.0
+margin_top = 23.0
+margin_right = 1902.0
+margin_bottom = 136.0
+
+[node name="Label" parent="InfoTiempoRestante" index="1"]
+margin_left = 28.0
+margin_top = 19.0
+margin_right = 185.0
+margin_bottom = 94.0
+text = "tiempo restante mm:ss"
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
+[editable path="InfoTiempoRestante"]

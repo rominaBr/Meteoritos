@@ -6,6 +6,16 @@ onready var texto_contenedor:Label = $Label
 onready var auto_ocultar_timer:Timer = $AutoOcultarTimer
 onready var animaciones:AnimationPlayer = $AnimationPlayer
 
+## Atributos
+var auto_ocultar:bool = true setget set_auto_ocultar
+
+## Setters y getters
+func set_auto_ocultar(ocultar:bool) -> void:
+	if ocultar:
+		ocultar()
+	else:
+		mostrar_suavizado()
+
 ## Métodos Custom
 func mostrar() -> void:
 	$AnimationPlayer.play("mostrar")
