@@ -108,6 +108,7 @@ func quitar_icono(objeto:Node2D) -> void:
 	if objeto in items_mini_mapa:
 		items_mini_mapa[objeto].queue_free()
 		items_mini_mapa.erase(objeto)
+		
 
 ## Señales internas
 func _on_TimerVisibilidad_timeout() -> void:

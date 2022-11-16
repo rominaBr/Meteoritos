@@ -8,7 +8,7 @@
 [ext_resource path="res://Juegos/UI/MiniMapa/Iconos/rele.png" type="Texture" id=6]
 [ext_resource path="res://Juegos/UI/MiniMapa/Iconos/interceptor.png" type="Texture" id=7]
 
-[node name="MiniMapa" type="MarginContainer"]
+[node name="MiniMapa" type="MarginContainer" groups=["contenedor_info"]]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
