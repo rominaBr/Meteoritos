@@ -75,6 +75,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [node name="ContenedorInformacion" type="NinePatchRect"]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 197.0
 margin_bottom = 82.0
 texture = ExtResource( 1 )
@@ -85,6 +86,7 @@ patch_margin_bottom = 13
 script = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "ocultar"
 anims/mostrar = SubResource( 4 )
 anims/mostrar_suavizado = SubResource( 2 )
 anims/ocultar = SubResource( 5 )

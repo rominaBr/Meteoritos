@@ -3,6 +3,8 @@ extends NinePatchRect
 
 ## Atributos onready
 onready var texto_contenedor:Label = $Label
+onready var auto_ocultar_timer:Timer = $AutoOcultarTimer
+onready var animaciones:AnimationPlayer = $AnimationPlayer
 
 ## Métodos Custom
 func mostrar() -> void:

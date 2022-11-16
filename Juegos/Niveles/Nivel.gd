@@ -9,7 +9,7 @@ export var sector_meteoritos:PackedScene = null
 export var tiempo_transicion_camara = 5
 export var enemigo_interceptor:PackedScene = null
 export var rele_masa:PackedScene = null
-
+export var tiempo_limite:int = 10
 
 ## Atributos onready
 onready var contenedor_proyectiles:Node
@@ -18,6 +18,7 @@ onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CamaraNivel
 onready var estacion:AnimationPlayer = $ContenedorEstaciones/EstacionRecarga/AnimationPlayer
 onready var contenedor_enemigos:Node
+onready var actualizador_timer:Timer = $ActualizadorTimer
 
 ## Atributos
 var meteoritos_totales:int = 0
@@ -34,6 +35,7 @@ func _ready() -> void:
 	player = DatosJuego.get_player_actual()
 	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
+	actualizador_timer.start()
 
 ## Medodos custom
 func conectar_seniales() -> void:
@@ -107,6 +109,15 @@ func controlar_meteoritos_restantes() -> void:
 			$Player/CamaraPlayer,
 			tiempo_transicion_camara * 0.10
 		)
+
+func destruir_nivel() -> void:
+	crear_explosion(
+		player.global_position,
+		2,
+		1.5,
+		Vector2(300.0, 200.0)
+	)
+	player.destruir()
 
 func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, tiempo_transicion:float) -> void:
 	$TweenCamara.interpolate_property(
@@ -214,3 +225,7 @@ func _on_RestartTimer_timeout() -> void:
 	get_tree().reload_current_scene()
 
 
+func _on_ActualizadorTimer_timeout() -> void:
+	tiempo_limite -= 1
+	if tiempo_limite == 0:
+		destruir_nivel()

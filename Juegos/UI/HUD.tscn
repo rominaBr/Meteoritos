@@ -110,12 +110,16 @@ stretch_mode = 2
 anims/fade_in = SubResource( 1 )
 
 [node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+margin_left = 12.0
+margin_top = 14.0
+margin_right = 209.0
+margin_bottom = 96.0
 
 [node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
-margin_left = 8.0
-margin_top = 977.0
-margin_right = 219.0
-margin_bottom = 1074.0
+margin_left = 15.0
+margin_top = 968.0
+margin_right = 226.0
+margin_bottom = 1065.0
 
 [node name="AnimationPlayer" parent="InfoMeteoritos" index="0"]
 anims/mostrar = SubResource( 2 )

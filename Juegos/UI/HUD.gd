@@ -6,7 +6,6 @@ onready var info_meteoritos:ContenedorInformacion = $InfoMeteoritos
 
 ## Métodos
 func _ready() -> void:
-	info_zona_recarga.ocultar()
 	conectar_seniales()
 	
 	
