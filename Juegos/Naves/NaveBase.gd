@@ -58,7 +58,7 @@ func recibir_danio(danio: float) -> void:
 	print(hitpoints)
 	if hitpoints <= 0.0:		
 		destruir()
-	barra_salud.value = hitpoints
+	barra_salud.controlar_barra(hitpoints, true)
 	sonido_danio.play()		
 
 func destruir() -> void:
@@ -73,3 +73,5 @@ func _on_body_entered(body: Node) -> void:
 	if body is Meteorito:
 		body.destruir()
 		destruir()
+
+
