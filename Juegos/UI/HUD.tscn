@@ -151,6 +151,18 @@ margin_right = 185.0
 margin_bottom = 94.0
 text = "tiempo restante mm:ss"
 
+[node name="InfoEscudo" parent="." instance=ExtResource( 4 )]
+margin_left = 1656.0
+margin_top = 896.0
+margin_right = 1910.0
+margin_bottom = 978.0
+
+[node name="Label" parent="InfoEscudo" index="1"]
+text = "ENERGÍA ESCUDO"
+
+[node name="ProgressBar" parent="InfoEscudo" index="3"]
+value = 100.0
+
 [node name="InfoLaser" parent="." instance=ExtResource( 4 )]
 margin_left = 1656.0
 margin_top = 985.0
@@ -160,7 +172,11 @@ margin_bottom = 1067.0
 [node name="Label" parent="InfoLaser" index="1"]
 text = "ENERGÍA LÁSER"
 
+[node name="ProgressBar" parent="InfoLaser" index="3"]
+value = 100.0
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
 [editable path="InfoTiempoRestante"]
+[editable path="InfoEscudo"]
 [editable path="InfoLaser"]

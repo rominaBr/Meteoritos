@@ -14,7 +14,7 @@ var player_en_zona:bool = false
 
 ## Métodos
 func _unhandled_input(event: InputEvent) -> void:
-	if not puede_recargar(event):
+	if not (event):
 		return
 	
 	controlar_energia()	
@@ -26,6 +26,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("recarga_escudo"):
 		Eventos.emit_signal("ocultar_energia_laser")
+	elif event.is_action_released("recarga_escudo"):
+		Eventos.emit_signal("ocultar_energia_escudo")
 	
 func puede_recargar(event: InputEvent) -> bool:
 	var hay_input = event.is_action("recarga_escudo") or event.is_action("recarga_laser")
