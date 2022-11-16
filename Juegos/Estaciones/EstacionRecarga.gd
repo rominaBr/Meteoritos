@@ -23,15 +23,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		nave_player.get_escudo().controlar_energia(radio_energia_entregada)
 	elif event.is_action("recarga_laser"):
 		nave_player.get_laser().controlar_energia(radio_energia_entregada)
-
+	
+	if event.is_action_released("recarga_escudo"):
+		Eventos.emit_signal("ocultar_energia_laser")
 	
 func puede_recargar(event: InputEvent) -> bool:
 	var hay_input = event.is_action("recarga_escudo") or event.is_action("recarga_laser")
 	if hay_input and player_en_zona and energia > 0.0:
 		if !carga_sfx.playing:
-			carga_sfx.play()			
+			carga_sfx.play()	
+		if Input.is_action_just_released("recarga_escudo") or Input.is_action_just_released("recarga_laser"):
+			carga_sfx.stop()			
 		return true
-	
+		
 	return false
 
 func controlar_energia() -> void:

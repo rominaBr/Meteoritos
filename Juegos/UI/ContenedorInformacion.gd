@@ -18,16 +18,16 @@ func set_auto_ocultar(ocultar:bool) -> void:
 
 ## Métodos Custom
 func mostrar() -> void:
-	$AnimationPlayer.play("mostrar")
+	animaciones.play("mostrar")
 	
 func ocultar() -> void:
-	$AnimationPlayer.play("ocultar")
+	animaciones.play("ocultar")
 	
 func mostrar_suavizado() -> void:
-	$AnimationPlayer.play("mostrar_suavizado")
+	animaciones.play("mostrar_suavizado")
 	
 func ocultar_suavizado() -> void:
-	$AnimationPlayer.play("ocultar_suavizado")
+	animaciones.play("ocultar_suavizado")
 	
 func modificar_texto(text:String) -> void:
 	texto_contenedor.text = text

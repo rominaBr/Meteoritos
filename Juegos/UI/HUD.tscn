@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://icono_juego.png" type="Texture" id=1]
 [ext_resource path="res://Juegos/UI/HUD.gd" type="Script" id=2]
 [ext_resource path="res://Juegos/UI/ContenedorInformacion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juegos/UI/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -150,6 +151,16 @@ margin_right = 185.0
 margin_bottom = 94.0
 text = "tiempo restante mm:ss"
 
+[node name="InfoLaser" parent="." instance=ExtResource( 4 )]
+margin_left = 1656.0
+margin_top = 985.0
+margin_right = 1910.0
+margin_bottom = 1067.0
+
+[node name="Label" parent="InfoLaser" index="1"]
+text = "ENERGÍA LÁSER"
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
 [editable path="InfoTiempoRestante"]
+[editable path="InfoLaser"]
