@@ -110,7 +110,7 @@ tracks/1/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[node name="BaseEnemiga" type="Node2D"]
+[node name="BaseEnemiga" type="Node2D" groups=["minimap"]]
 z_as_relative = false
 script = ExtResource( 6 )
 hitpoints = 20.0

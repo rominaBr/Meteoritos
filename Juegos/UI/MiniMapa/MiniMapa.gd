@@ -10,6 +10,9 @@ var player:Player = null
 ## Atributos onready
 onready var zona_renderizado:TextureRect = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa
 onready var icono_player:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoPlayer
+onready var icono_base:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoBaseEnemiga
+onready var icono_estacion:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoEstacion
+onready var items_mini_mapa:Dictionary = {}
 
 ## Métodos
 func _ready() -> void:
@@ -21,16 +24,45 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if not player:
-		return
-		
+		return		
 	icono_player.rotation_degrees = player.rotation_degrees + 90
+	modificar_posicion_iconos()
 	
 ## Métodos custom
 func _on_nivel_iniciado() -> void:
 	player = DatosJuego.get_player_actual()
+	obtener_objetos_minimap()
 	set_process(true)
 
 func _on_nave_destruida(nave: NaveBase, _posicion, _explosiones) -> void:
 	if nave is Player:
 		player = null
 	
+func obtener_objetos_minimap() -> void:
+	var objetos_en_ventana:Array = get_tree().get_nodes_in_group("minimap")
+	for objeto in objetos_en_ventana:
+		if not items_mini_mapa.has(objeto):
+			var sprite_icono:Sprite
+			if objeto is BaseEnemiga:
+				sprite_icono = icono_base.duplicate()
+			elif objeto is EstacionRecarga:
+				sprite_icono = icono_estacion.duplicate()
+			
+			items_mini_mapa[objeto] = sprite_icono
+			items_mini_mapa[objeto].visible = true
+			zona_renderizado.add_child(items_mini_mapa[objeto])
+
+
+func modificar_posicion_iconos() -> void:
+	for item in items_mini_mapa:
+		var item_icono:Sprite = items_mini_mapa[item]
+		var offset_pos:Vector2 = item.position - player.position
+		var pos_icono:Vector2 = offset_pos * escala_grilla + (zona_renderizado.rect_size * 0.5)
+		pos_icono.x = clamp(pos_icono.x, 0 , zona_renderizado.rect_size.x)
+		pos_icono.y = clamp(pos_icono.y, 0, zona_renderizado.rect_size.y)
+		item_icono.position = pos_icono
+		
+		if zona_renderizado.get_rect().has_point(pos_icono - zona_renderizado.rect_position):
+			item_icono.scale = Vector2(0.5, 0.5)
+		else:
+			item_icono.scale = Vector2(0.3, 0.3)

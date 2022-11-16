@@ -119,7 +119,7 @@ position = Vector2( 2112, 17 )
 texture = ExtResource( 12 )
 
 [node name="Sprite12" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 2110, 511 )
+position = Vector2( 2107, 520 )
 texture = ExtResource( 12 )
 
 [node name="Sprite13" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
@@ -131,7 +131,7 @@ position = Vector2( 1624, 1026 )
 texture = ExtResource( 12 )
 
 [node name="Sprite15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 2118, 1023 )
+position = Vector2( 2107, 1023 )
 texture = ExtResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

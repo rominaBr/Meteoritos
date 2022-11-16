@@ -164,7 +164,7 @@ text = "ENERGÍA ESCUDO"
 [node name="ProgressBar" parent="InfoEscudo" index="3"]
 value = 100.0
 
-[node name="InfoLaser" parent="." instance=ExtResource( 4 )]
+[node name="InfoLaser" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
 margin_left = 1656.0
 margin_top = 985.0
 margin_right = 1910.0
@@ -178,8 +178,19 @@ value = 100.0
 
 [node name="MiniMapa" parent="." instance=ExtResource( 5 )]
 
+[node name="ContenedorIconos" parent="MiniMapa/CuadroMiniMapa" index="0"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="ZonaRenderizadoMiniMapa" parent="MiniMapa/CuadroMiniMapa/ContenedorIconos" index="0"]
+margin_right = 308.0
+margin_bottom = 166.0
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
 [editable path="InfoTiempoRestante"]
 [editable path="InfoEscudo"]
 [editable path="InfoLaser"]
+[editable path="MiniMapa"]
