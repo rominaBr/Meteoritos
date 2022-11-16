@@ -170,6 +170,8 @@ func _on_disparo(proyectil:Proyectil) -> void:
 	
 func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void:	
 	if nave is Player:
+		get_tree().call_group("contenedor_info", "set_esta_activo", false)
+		get_tree().call_group("contenedor_info", "ocultar")
 		transicion_camaras(
 			posicion,
 			posicion + crear_posicion_aleatoria(-200.0, 200.0),

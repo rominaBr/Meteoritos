@@ -110,14 +110,14 @@ stretch_mode = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeCanvas"]
 anims/fade_in = SubResource( 1 )
 
-[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+[node name="InfoZonaRecarga" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 12.0
 margin_top = 14.0
 margin_right = 209.0
 margin_bottom = 96.0
 
-[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+[node name="InfoMeteoritos" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 15.0
 margin_top = 968.0
@@ -137,7 +137,7 @@ margin_right = 197.0
 margin_bottom = 101.0
 text = "METEORITOS RESTANTES 2"
 
-[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
+[node name="InfoTiempoRestante" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 1688.0
 margin_top = 23.0
@@ -151,7 +151,7 @@ margin_right = 185.0
 margin_bottom = 94.0
 text = "tiempo restante mm:ss"
 
-[node name="InfoEscudo" parent="." instance=ExtResource( 4 )]
+[node name="InfoEscudo" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
 margin_left = 1656.0
 margin_top = 896.0
 margin_right = 1910.0
