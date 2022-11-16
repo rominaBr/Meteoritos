@@ -13,14 +13,15 @@ onready var icono_player:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderiza
 onready var icono_base:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoBaseEnemiga
 onready var icono_estacion:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoEstacion
 onready var items_mini_mapa:Dictionary = {}
+onready var icono_interceptor:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoInterceptor
+onready var icono_rele:Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoRele
 
 ## Métodos
 func _ready() -> void:
 	set_process(false)
 	icono_player.position = zona_renderizado.rect_size * 0.5
 	escala_grilla = zona_renderizado.rect_size / (get_viewport_rect().size * escala_zoom)
-	Eventos.connect("nivel_iniciado", self, "_on_nivel_iniciado")
-	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
+	
 	
 func _process(delta: float) -> void:
 	if not player:
@@ -29,6 +30,11 @@ func _process(delta: float) -> void:
 	modificar_posicion_iconos()
 	
 ## Métodos custom
+func conectar_seniales() -> void:
+	Eventos.connect("nivel_iniciado", self, "_on_nivel_iniciado")
+	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
+	Eventos.connect("minimapa_objeto_creado", self, "obtener_objetos_minimapa")
+	
 func _on_nivel_iniciado() -> void:
 	player = DatosJuego.get_player_actual()
 	obtener_objetos_minimap()
@@ -47,6 +53,10 @@ func obtener_objetos_minimap() -> void:
 				sprite_icono = icono_base.duplicate()
 			elif objeto is EstacionRecarga:
 				sprite_icono = icono_estacion.duplicate()
+			elif objeto is EnemigoInterceptor:
+				sprite_icono = icono_interceptor.duplicate()
+			elif objeto is ReleMasa:
+				sprite_icono = icono_rele.duplicate()
 			
 			items_mini_mapa[objeto] = sprite_icono
 			items_mini_mapa[objeto].visible = true
