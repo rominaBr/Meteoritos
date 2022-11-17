@@ -46,8 +46,7 @@ func puede_recargar(event: InputEvent) -> bool:
 		
 	return false
 
-func controlar_energia() -> void:	
-	print(energia)
+func controlar_energia() -> void:		
 	energia -= radio_energia_entregada
 	if energia <= 0.0:
 		$VacioSfx.play()
