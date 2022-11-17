@@ -183,8 +183,9 @@ func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void
 	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
 
 func _on_base_destruida(base:BaseEnemiga, pos_partes:Array) -> void:		
+	print("Partes: ", pos_partes)
 	for posicion in pos_partes:
-		crear_explosion(posicion)
+		crear_explosion(posicion, 1, 0.6, Vector2(100.0,50.0))
 		yield(get_tree().create_timer(0.5),"timeout")
 	numero_bases_enemigas -= 1
 	if numero_bases_enemigas == 0:

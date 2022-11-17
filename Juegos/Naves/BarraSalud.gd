@@ -6,7 +6,7 @@ export var siempre_visible = false
 
 ## Atributos onready
 onready var tween_visibilidad:Tween = $TweenVisibilidad
-onready var barra_salud:ProgressBar = $BarraSalud
+
 
 ## Métodos
 func _ready() -> void:	

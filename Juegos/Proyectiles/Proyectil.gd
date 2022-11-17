@@ -18,8 +18,7 @@ func _physics_process(delta: float) -> void:
 	position += velocidad * delta
 
 ## Métodos custom
-func daniar(otro_cuerpo: CollisionObject2D) -> void:	
-	print(otro_cuerpo.name)
+func daniar(otro_cuerpo: CollisionObject2D) -> void:		
 	if otro_cuerpo.has_method("recibir_danio"):				
 		otro_cuerpo.recibir_danio(danio)		
 	queue_free()	

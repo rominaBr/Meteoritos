@@ -48,10 +48,9 @@ position = Vector2( -834, 363 )
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
-position = Vector2( 831, -264 )
 
 [node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
-position = Vector2( -1540, -839 )
+position = Vector2( -1307, 1217 )
 
 [node name="TriggersInterceptores" type="Node" parent="."]
 
@@ -135,7 +134,7 @@ position = Vector2( 2107, 1023 )
 texture = ExtResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -1293, 103 )
+position = Vector2( -557, 1019 )
 
 [node name="RestartTimer" type="Timer" parent="."]
 one_shot = true

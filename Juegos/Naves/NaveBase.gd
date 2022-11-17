@@ -53,7 +53,6 @@ func esta_input_activo() -> bool:
 
 func recibir_danio(danio: float) -> void:	
 	hitpoints -= danio	
-	print(hitpoints)
 	if hitpoints <= 0.0:		
 		destruir()
 	barra_salud.controlar_barra(hitpoints, true)
