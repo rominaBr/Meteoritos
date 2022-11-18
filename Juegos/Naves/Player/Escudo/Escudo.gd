@@ -31,7 +31,11 @@ func controlar_energia(consumo:float) -> void:
 	if energia > energia_origina:
 		energia = energia_origina
 	elif energia <= 0.0:
+		Eventos.emit_signal("ocultar_energia_escudo")
 		desactivar()
+		return
+		
+	Eventos.emit_signal("cambio_energia_escudo", energia_origina, energia)
 	
 func activar() -> void:	
 	if energia <= 0.0:

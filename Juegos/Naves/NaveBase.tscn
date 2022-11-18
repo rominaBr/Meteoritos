@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Juegos/Naves/BarraSalud.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juegos/Naves/NaveBase.gd" type="Script" id=3]
 [ext_resource path="res://Juegos/Proyectiles/Canion.tscn" type="PackedScene" id=4]
 
@@ -19,10 +20,11 @@ modulate = Color( 0.788235, 0.301961, 0.164706, 1 )
 position = Vector2( -1, 0 )
 
 [node name="Canion" parent="." instance=ExtResource( 4 )]
-danio_proyectil = 2
 
 [node name="ImpactoSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 3 )
 bus = "SFX"
+
+[node name="BarraSalud" parent="." instance=ExtResource( 1 )]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

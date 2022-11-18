@@ -1,6 +1,10 @@
 class_name ReleMasa
 extends Node2D
 
+## Métodos
+func _ready() -> void:
+	Eventos.emit_signal("minimapa_objeto_creado")
+
 ## Métodos custom
 func atraer_player(body:Node) -> void:
 	$Tween.interpolate_property(
@@ -27,4 +31,4 @@ func _on_DetectorPlayer_body_entered(body: Node) -> void:
 
 
 func _on_Tween_tween_all_completed() -> void:
-	print("Terminé!!!")
+	Eventos.emit_signal("nivel_completado")

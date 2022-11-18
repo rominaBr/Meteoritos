@@ -15,13 +15,13 @@ var estado_actual:int = ESTADO.SPAWN
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var sonido_danio:AudioStreamPlayer = $ImpactoSFX
 onready var canion:Canion = $Canion
-
+onready var barra_salud:ProgressBar = $BarraSalud
 
 ## Metodos
-func _ready() -> void:
+func _ready() -> void:	
 	controlador_estados(estado_actual)
 	controlador_estados(ESTADO.VIVO)
-
+	barra_salud.set_valores(hitpoints)
 	
 ## Metodos Custom
 func controlador_estados(nuevo_estado:int) -> void:
@@ -53,9 +53,9 @@ func esta_input_activo() -> bool:
 
 func recibir_danio(danio: float) -> void:	
 	hitpoints -= danio	
-	print(hitpoints)
 	if hitpoints <= 0.0:		
 		destruir()
+	barra_salud.controlar_barra(hitpoints, true)
 	sonido_danio.play()		
 
 func destruir() -> void:
@@ -70,3 +70,5 @@ func _on_body_entered(body: Node) -> void:
 	if body is Meteorito:
 		body.destruir()
 		destruir()
+
+

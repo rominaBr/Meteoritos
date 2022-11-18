@@ -11,6 +11,7 @@ collision_layer = 0
 space_override = 1
 gravity_point = true
 gravity = 1000.0
+angular_damp = 0.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

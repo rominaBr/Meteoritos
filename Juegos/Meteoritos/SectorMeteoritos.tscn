@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Juegos/Meteoritos/MeteoritoSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juegos/Meteoritos/SectorMeteoritos.gd" type="Script" id=2]
@@ -42,45 +42,6 @@ size = 50
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
-
-[sub_resource type="Animation" id=10]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AudioStreamPlayer:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=11]
 resource_name = "advertencia"
@@ -354,7 +315,6 @@ direccion = Vector2( -2, -1 )
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
-modulate = Color( 0, 0, 0, 0 )
 anchor_top = 0.003
 anchor_right = 0.007
 anchor_bottom = 0.003
@@ -384,7 +344,6 @@ stream = ExtResource( 4 )
 bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 10 )
 anims/advertencia = SubResource( 11 )
 anims/default = SubResource( 12 )
 
