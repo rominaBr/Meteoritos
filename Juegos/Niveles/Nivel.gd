@@ -192,7 +192,7 @@ func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void
 		
 	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
 
-func _on_base_destruida(base:BaseEnemiga, pos_partes:Array) -> void:	
+func _on_base_destruida(_base:BaseEnemiga, pos_partes:Array) -> void:	
 	for posicion in pos_partes:
 		crear_explosion(posicion, 1, 0.6, Vector2(100.0,50.0))
 		yield(get_tree().create_timer(0.5),"timeout")
@@ -232,7 +232,7 @@ func _on_nivel_completado() -> void:
 	get_tree().change_scene(prox_nivel)
 
 ## Señales Internas
-func _on_TweenCamara_tween_completed(object: Object, key: NodePath) -> void:
+func _on_TweenCamara_tween_completed(object: Object, _key: NodePath) -> void:
 	if object.name == "CamaraPlayer":
 		object.global_position = $Player.global_position
 

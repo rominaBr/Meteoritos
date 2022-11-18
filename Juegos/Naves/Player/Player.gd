@@ -52,7 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escudo") and not escudo.get_esta_activado():
 		escudo.activar()
 
-func _integrate_forces(state: Physics2DDirectBodyState) -> void:
+func _integrate_forces(_state: Physics2DDirectBodyState) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
 	apply_torque_impulse(dir_rotacion * potencia_rotacion)
 

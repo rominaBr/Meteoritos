@@ -23,8 +23,8 @@ func _process(delta: float) -> void:
 	controlar_energia(radio_desgaste * delta)
 
 ## Métodos Custom
-func controlar_colisionador(esta_activado: bool) -> void:
-	$CollisionShape2D.set_deferred("disabled", esta_activado)
+func controlar_colisionador(activado: bool) -> void:
+	$CollisionShape2D.set_deferred("disabled", activado)
 
 func controlar_energia(consumo:float) -> void:
 	energia += consumo

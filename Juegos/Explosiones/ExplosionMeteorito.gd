@@ -11,5 +11,5 @@ func elegir_explosion_aleatoria() -> String:
 	var lista_animacion:Array = $AnimationPlayer.get_animation_list()
 	return lista_animacion[indice_anim_aleatorio]
 
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:	
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:	
 	queue_free()
