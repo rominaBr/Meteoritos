@@ -21,8 +21,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not puede_recargar(event):
-		return
-	
+		return	
 	controlar_energia()	
 		
 	if event.is_action("recarga_escudo"):	
@@ -49,8 +48,9 @@ func puede_recargar(event: InputEvent) -> bool:
 func controlar_energia() -> void:		
 	energia -= radio_energia_entregada
 	if energia <= 0.0:
-		$VacioSfx.play()
+		$VacioSfx.play()		
 	barra_energia.value = energia
+	
 	
 ## Señales internas
 func _on_AreaColision_body_entered(body: Node) -> void:

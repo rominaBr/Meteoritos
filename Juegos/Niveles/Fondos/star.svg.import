@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fondoVioletaOscuro.png-cfe3ca3d711dcca31499e84e21c60562.stex"
+path="res://.import/star.svg-26717fd9186e02ae9d350358cda0ac99.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juegos/Niveles/Fondos/fondoVioletaOscuro.png"
-dest_files=[ "res://.import/fondoVioletaOscuro.png-cfe3ca3d711dcca31499e84e21c60562.stex" ]
+source_file="res://Juegos/Niveles/Fondos/star.svg"
+dest_files=[ "res://.import/star.svg-26717fd9186e02ae9d350358cda0ac99.stex" ]
 
 [params]
 

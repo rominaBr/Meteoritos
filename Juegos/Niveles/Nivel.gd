@@ -12,6 +12,7 @@ export var rele_masa:PackedScene = null
 export var tiempo_limite:int = 10
 export var musica_nivel:AudioStream = null
 export var musica_combate:AudioStream = null
+export(String, FILE, "*.tscn") var prox_nivel = ""
 
 ## Atributos onready
 onready var contenedor_proyectiles:Node
@@ -52,6 +53,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("nave_en_sector_peligroso", self, "_on_nave_en_sector_peligro")	
 	Eventos.connect("base_destruida", self, "_on_base_destruida")
 	Eventos.connect("spawn_orbital", self, "_on_spawn_orbital")
+	Eventos.connect("nivel_completado", self, "_on_nivel_completado")
 	
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
@@ -190,13 +192,12 @@ func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void
 		
 	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
 
-func _on_base_destruida(base:BaseEnemiga, pos_partes:Array) -> void:		
-	print("Partes: ", pos_partes)
+func _on_base_destruida(base:BaseEnemiga, pos_partes:Array) -> void:	
 	for posicion in pos_partes:
 		crear_explosion(posicion, 1, 0.6, Vector2(100.0,50.0))
 		yield(get_tree().create_timer(0.5),"timeout")
 	numero_bases_enemigas -= 1
-	if numero_bases_enemigas == 0:
+	if numero_bases_enemigas == 0 and DatosJuego.get_player_actual() != null:
 		crear_rele()
 
 func _on_spawn_meteoritos(pos_spawn: Vector2, dir_meteorito: Vector2, tamanio:float) -> void:
@@ -219,11 +220,16 @@ func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_pel
 	if tipo_peligro == "Meteorito":		
 		crear_sector_meteoritos(centro_cam, num_peligros)
 		Eventos.emit_signal("cambio_numero_meteoritos", num_peligros)
-	elif tipo_peligro == "Enemigo":
+	elif tipo_peligro == "Enemigo" and DatosJuego.get_player_actual() != null:
 		crear_sector_enemigos(num_peligros)
 
 func _on_spawn_orbital(enemigo:EnemigoOrbital) -> void:
 	contenedor_enemigos.add_child(enemigo)
+
+func _on_nivel_completado() -> void:
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0), "timeout")
+	get_tree().change_scene(prox_nivel)
 
 ## Señales Internas
 func _on_TweenCamara_tween_completed(object: Object, key: NodePath) -> void:

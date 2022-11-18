@@ -43,5 +43,6 @@ func _on_SpawnTimer_timeout() -> void:
 	spawners[spawner_aleatorio()].spawnear_meteorito()	
 	cantidad_meteoritos -= 1
 
+## Señales externas
 func _on_detector_body_entered(body: Node) -> void:		
 	body.set_esta_en_sector(false)

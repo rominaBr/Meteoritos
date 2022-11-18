@@ -60,7 +60,6 @@ func recibir_danio(danio:float) -> void:
 	if hitpoints <= 0 and not esta_destruido:
 		esta_destruido = true
 		destruir()
-	##impacto_sfx.play()
 	$AnimationPlayer.play("impacto")
 		
 func destruir() -> void:
