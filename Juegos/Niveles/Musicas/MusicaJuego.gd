@@ -5,6 +5,9 @@ onready var musica_nivel:AudioStreamPlayer = $MusicaNivel
 onready var musica_combate:AudioStreamPlayer = $MusicaCombate
 onready var tween_on:Tween = $TweenMusicaOn
 onready var tween_off:Tween = $TweenMusicaOff
+onready var lista_musicas:Dictionary = {
+	"menu_principal": $MusicaMenuPrincipal
+} setget, get_lista_musicas
 
 ## Atributos export
 export var tiempo_transicion:float = 4.0
@@ -13,14 +16,21 @@ export(float, -50.0, -20.0, 5.0) var volumen_apagado = -40.0
 ## Atributos
 var vol_original_musica_off:float = 0.0
 
+func get_lista_musicas() -> Dictionary:
+	return lista_musicas
+
 ## Metodos Custom
 func set_streams(stream_musica:AudioStream, stream_combate:AudioStream) -> void:
 	musica_nivel.stream = stream_musica
 	musica_combate.stream = stream_combate
-	
+
 func play_musica_nivel() -> void:
 	stop_todo()
-	musica_nivel.play()
+	musica_nivel.play()	
+	
+func play_musica(musica:AudioStreamPlayer) -> void:
+	stop_todo()
+	musica.play()
 
 func stop_todo() -> void:
 	for nodo in get_children():
@@ -62,6 +72,9 @@ func fade_out(musica_fade_out: AudioStreamPlayer) -> void:
 		Tween.EASE_IN_OUT
 	)
 	tween_off.start()
+	
+func play_boton() -> void:
+	$BotonMenu.play()
 	
 ## Señales internas
 func _on_TweenMusicaOff_tween_completed(object: Object, key: NodePath) -> void:
