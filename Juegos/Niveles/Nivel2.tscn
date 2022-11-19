@@ -32,10 +32,10 @@ position = Vector2( 1708, -1114 )
 tipo_peligro = "Enemigo"
 numero_peligros = 3
 
-[node name="StarFieldBackground" parent="." index="10"]
+[node name="StarFieldBackground" parent="." index="11"]
 color_fondo = Color( 0.196078, 0.0745098, 0.439216, 1 )
 
-[node name="Player" parent="." index="11"]
+[node name="Player" parent="." index="12"]
 hitpoints = 30.0
 potencia_motor = 25
 estela_maxima = 250

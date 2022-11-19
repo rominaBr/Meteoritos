@@ -83,7 +83,7 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Panel"]
-modulate = Color( 0.522032, 0.219094, 0.919217, 0.683599 )
+modulate = Color( 0.0235294, 0.00392157, 0.2, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
