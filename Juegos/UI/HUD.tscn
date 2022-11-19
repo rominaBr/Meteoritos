@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://icono_juego.png" type="Texture" id=1]
 [ext_resource path="res://Juegos/UI/HUD.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Juegos/UI/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juegos/UI/MiniMapa/MiniMapa.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juegos/UI/tiempo_limite.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Juegos/Naves/Player/Vida.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -132,6 +133,7 @@ tracks/1/keys = {
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
+icono_vidas = ExtResource( 7 )
 
 [node name="FadeCanvas" type="CanvasLayer" parent="."]
 

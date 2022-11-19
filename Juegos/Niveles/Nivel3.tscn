@@ -9,6 +9,7 @@
 tiempo_transicion_camara = 7
 tiempo_limite = 100
 prox_nivel = "res://Juegos/Niveles/Nivel4.tscn"
+nivel_actual = "res://Juegos/Niveles/Nivel3.tscn"
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 3 )]
 position = Vector2( 2178, -881 )
@@ -42,10 +43,10 @@ position = Vector2( 4772, 1117 )
 tipo_peligro = "Enemigo"
 numero_peligros = 4
 
-[node name="StarFieldBackground" parent="." index="10"]
+[node name="StarFieldBackground" parent="." index="11"]
 color_fondo = Color( 0.25098, 0.0196078, 0.286275, 1 )
 
-[node name="Player" parent="." index="11"]
+[node name="Player" parent="." index="12"]
 hitpoints = 50.0
 potencia_motor = 25
 estela_maxima = 250

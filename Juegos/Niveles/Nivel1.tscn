@@ -8,6 +8,7 @@
 [node name="Nivel1" instance=ExtResource( 1 )]
 tiempo_transicion_camara = 7
 prox_nivel = "res://Juegos/Niveles/Nivel2.tscn"
+nivel_actual = "res://Juegos/Niveles/Nivel1.tscn"
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 4 )]
 position = Vector2( 1131, -1142 )
@@ -24,10 +25,10 @@ numero_orbitales = 5
 position = Vector2( -1273, -1244 )
 numero_orbitales = 5
 
-[node name="StarFieldBackground" parent="." index="10"]
+[node name="StarFieldBackground" parent="." index="11"]
 color_fondo = Color( 0, 0.0196078, 0.172549, 1 )
 
-[node name="Player" parent="." index="11"]
+[node name="Player" parent="." index="12"]
 hitpoints = 30.0
 potencia_motor = 25
 estela_maxima = 250

@@ -13,6 +13,8 @@ export var tiempo_limite:int = 10
 export var musica_nivel:AudioStream = null
 export var musica_combate:AudioStream = null
 export(String, FILE, "*.tscn") var prox_nivel = ""
+export (String, FILE, "*.tscn") var menu_game_over = ""
+export (String, FILE, "*.tscn") var nivel_actual = ""
 
 ## Atributos onready
 onready var contenedor_proyectiles:Node
@@ -57,7 +59,8 @@ func conectar_seniales() -> void:
 	Eventos.connect("nave_en_sector_peligroso", self, "_on_nave_en_sector_peligro")	
 	Eventos.connect("base_destruida", self, "_on_base_destruida")
 	Eventos.connect("spawn_orbital", self, "_on_spawn_orbital")
-	Eventos.connect("nivel_completado", self, "_on_nivel_completado")
+	Eventos.connect("nivel_completado", self, "_on_nivel_completado")	
+	Eventos.connect("game_over", self, "_on_game_over")
 	
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
@@ -193,7 +196,7 @@ func _on_nave_destruida(nave:Player, posicion: Vector2, num_explosiones) -> void
 			tiempo_transicion_camara
 		)
 		$RestartTimer.start()
-		
+		DatosJuego.restar_vidas()
 	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
 
 func _on_base_destruida(_base:BaseEnemiga, pos_partes:Array) -> void:	
@@ -234,6 +237,11 @@ func _on_nivel_completado() -> void:
 	Eventos.emit_signal("nivel_terminado")
 	yield(get_tree().create_timer(1.0), "timeout")
 	get_tree().change_scene(prox_nivel)
+
+func _on_game_over() -> void:	
+	DatosJuego.nivel_actual = nivel_actual
+# warning-ignore:return_value_discarded
+	get_tree().change_scene(menu_game_over)
 
 ## Señales Internas
 func _on_TweenCamara_tween_completed(object: Object, _key: NodePath) -> void:

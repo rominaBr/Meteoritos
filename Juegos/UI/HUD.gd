@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+## Atributos export
+export var icono_vidas:PackedScene = null
+
 ## Atributos onready
 onready var info_zona_recarga:ContenedorInformacion = $InfoZonaRecarga
 onready var info_meteoritos:ContenedorInformacion = $InfoMeteoritos
@@ -7,11 +10,14 @@ onready var info_tiempo_restante:ContenedorInformacion = $InfoTiempoRestante
 onready var info_laser:ContenedorInformacionEnergia = $InfoLaser
 onready var info_escudo:ContenedorInformacionEnergia = $InfoEscudo
 
+## Atributos
+var offset_vidas:float  = 60.0
+
 ## Métodos
 func _ready() -> void:
 	conectar_seniales()
 	info_tiempo_restante.set_esta_activo(true)
-	
+	Eventos.emit_signal("actualizar_vidas")
 	
 ## Métodos custom
 func conectar_seniales() -> void:
@@ -24,7 +30,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("ocultar_energia_laser", info_laser, "ocultar")
 	Eventos.connect("cambio_energia_escudo", self, "_on_actualizar_energia_escudo")
 	Eventos.connect("ocultar_energia_escudo", info_escudo, "ocultar")
-	
+	Eventos.connect("actualizar_vidas", self, "_on_actualizar_vidas")
 	
 func fade_in() -> void:
 	$FadeCanvas/AnimationPlayer.play("fade_in")
@@ -32,7 +38,12 @@ func fade_in() -> void:
 func fade_out() -> void:
 	$FadeCanvas/AnimationPlayer.play_backwards("fade_in")		
 	
-
+func _on_actualizar_vidas() -> void:
+	for i in DatosJuego.vidas:
+		var nueva_vida:Sprite= icono_vidas.instance()
+		self.add_child(nueva_vida)
+		nueva_vida.global_position.x -= offset_vidas * i
+		
 func _on_detecto_zona_recarga(en_zona: bool) -> void:
 	if en_zona:
 		info_zona_recarga.set_esta_activo(true)

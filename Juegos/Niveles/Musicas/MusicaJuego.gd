@@ -4,6 +4,7 @@ extends Node
 onready var musica_nivel:AudioStreamPlayer = $MusicaNivel
 onready var musica_combate:AudioStreamPlayer = $MusicaCombate
 onready var musica_victoria:AudioStreamPlayer = $MusicaVictoria
+onready var musica_game_over:AudioStreamPlayer = $MusicaGameOver
 onready var tween_on:Tween = $TweenMusicaOn
 onready var tween_off:Tween = $TweenMusicaOff
 onready var lista_musicas:Dictionary = {
@@ -37,6 +38,10 @@ func play_musica(musica:AudioStreamPlayer) -> void:
 func play_musica_victoria() -> void:
 	stop_todo()
 	musica_victoria.play()
+	
+func play_musica_game_over() -> void:
+	stop_todo()
+	musica_game_over.play()
 
 func stop_todo() -> void:
 	for nodo in get_children():

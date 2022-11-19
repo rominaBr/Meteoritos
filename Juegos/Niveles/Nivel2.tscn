@@ -8,6 +8,7 @@
 [node name="Nivel2" instance=ExtResource( 1 )]
 tiempo_limite = 80
 prox_nivel = "res://Juegos/Niveles/Nivel3.tscn"
+nivel_actual = "res://Juegos/Niveles/Nivel2.tscn"
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 3 )]
 position = Vector2( 3168, 153 )

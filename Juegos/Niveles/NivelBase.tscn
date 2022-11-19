@@ -30,6 +30,7 @@ rele_masa = ExtResource( 14 )
 tiempo_limite = 50
 musica_nivel = ExtResource( 17 )
 musica_combate = ExtResource( 16 )
+menu_game_over = "res://Juegos/Niveles/MenuGameOver.tscn"
 
 [node name="CapaFrente" type="CanvasLayer" parent="."]
 

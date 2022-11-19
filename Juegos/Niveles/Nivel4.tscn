@@ -9,6 +9,7 @@
 tiempo_transicion_camara = 7
 tiempo_limite = 160
 prox_nivel = "res://Juegos/Niveles/MenuVictoria.tscn"
+nivel_actual = "res://Juegos/Niveles/Nivel4.tscn"
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 3 )]
 position = Vector2( 287, 1969 )
