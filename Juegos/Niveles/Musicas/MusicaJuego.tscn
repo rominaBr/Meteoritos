@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Juegos/Niveles/Musicas/MusicaJuego.gd" type="Script" id=1]
 [ext_resource path="res://Juegos/Niveles/Musicas/combat-plan.wav" type="AudioStream" id=2]
 [ext_resource path="res://Juegos/Niveles/Musicas/boton_menu.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Juegos/Niveles/Musicas/POL-bomb-carrier-short.wav" type="AudioStream" id=4]
 
 [node name="MusicaJuego" type="Node"]
 script = ExtResource( 1 )
@@ -24,5 +25,9 @@ bus = "Musica"
 [node name="BotonMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 bus = "Botones"
+
+[node name="MusicaVictoria" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Musica"
 
 [connection signal="tween_completed" from="TweenMusicaOff" to="." method="_on_TweenMusicaOff_tween_completed"]

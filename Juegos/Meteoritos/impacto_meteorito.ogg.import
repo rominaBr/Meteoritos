@@ -11,5 +11,5 @@ dest_files=[ "res://.import/impacto_meteorito.ogg-8b27eb76f279bc56bb1c8e2e11ae9d
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

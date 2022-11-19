@@ -3,6 +3,7 @@ extends Node
 ## Atributos onready
 onready var musica_nivel:AudioStreamPlayer = $MusicaNivel
 onready var musica_combate:AudioStreamPlayer = $MusicaCombate
+onready var musica_victoria:AudioStreamPlayer = $MusicaVictoria
 onready var tween_on:Tween = $TweenMusicaOn
 onready var tween_off:Tween = $TweenMusicaOff
 onready var lista_musicas:Dictionary = {
@@ -23,6 +24,7 @@ func get_lista_musicas() -> Dictionary:
 func set_streams(stream_musica:AudioStream, stream_combate:AudioStream) -> void:
 	musica_nivel.stream = stream_musica
 	musica_combate.stream = stream_combate
+	
 
 func play_musica_nivel() -> void:
 	stop_todo()
@@ -31,6 +33,10 @@ func play_musica_nivel() -> void:
 func play_musica(musica:AudioStreamPlayer) -> void:
 	stop_todo()
 	musica.play()
+
+func play_musica_victoria() -> void:
+	stop_todo()
+	musica_victoria.play()
 
 func stop_todo() -> void:
 	for nodo in get_children():

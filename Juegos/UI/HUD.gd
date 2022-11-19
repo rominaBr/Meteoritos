@@ -10,6 +10,7 @@ onready var info_escudo:ContenedorInformacionEnergia = $InfoEscudo
 ## Métodos
 func _ready() -> void:
 	conectar_seniales()
+	info_tiempo_restante.set_esta_activo(true)
 	
 	
 ## Métodos custom
@@ -34,11 +35,13 @@ func fade_out() -> void:
 
 func _on_detecto_zona_recarga(en_zona: bool) -> void:
 	if en_zona:
+		info_zona_recarga.set_esta_activo(true)
 		info_zona_recarga.mostrar_suavizado()
 	else:
 		info_zona_recarga.ocultar_suavizado()
 
 func _on_actualizar_info_meteoritos(numero:int) -> void:
+	info_meteoritos.set_esta_activo(true)
 	info_meteoritos.mostrar_suavizado()
 	info_meteoritos.modificar_texto(
 		"Meteoritos restantes\n {cantidad}".format({"cantidad":numero})
@@ -53,15 +56,21 @@ func _on_actualizar_info_tiempo(tiempo_restante:int) -> void:
 	)
 	if tiempo_restante % 10 == 0:		
 		info_tiempo_restante.mostrar_suavizado()
-	if tiempo_restante == 11:
+	if tiempo_restante == 11:		
 		info_tiempo_restante.set_auto_ocultar(false)
+	if tiempo_restante < 11 and tiempo_restante >= 0:
+		info_tiempo_restante.animaciones.play("tiempo_limite")
 	elif tiempo_restante == 0:
+		info_tiempo_restante.animaciones.stop()
 		info_tiempo_restante.ocultar()
+		
 
 func _on_actualizar_energia_laser(energia_max:float, energia_actual:float) -> void:
+	info_laser.set_esta_activo(true)
 	info_laser.mostrar()
 	info_laser.actualizar_energia(energia_max, energia_actual)
 
 func _on_actualizar_energia_escudo(energia_max:float, energia_actual:float) -> void:
+	info_escudo.set_esta_activo(true)
 	info_escudo.mostrar()
 	info_escudo.actualizar_energia(energia_max, energia_actual)

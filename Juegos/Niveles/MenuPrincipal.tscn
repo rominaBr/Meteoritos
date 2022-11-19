@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Juegos/Niveles/Fonts/Kenney Future.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Juegos/Niveles/MenuPrincipal.gd" type="Script" id=2]
+[ext_resource path="res://Juegos/Niveles/boton_icono.png" type="Texture" id=3]
+[ext_resource path="res://Juegos/Niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -11,16 +13,66 @@ font_data = ExtResource( 1 )
 size = 94
 font_data = ExtResource( 1 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 679, 410 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 360.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "inicio"
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.3, 2, 2.2, 2.5, 4, 4.3, 4.5, 6, 6.3, 6.4, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 679, 410 ), Vector2( 679, 188 ), Vector2( 722, 155 ), Vector2( 900.5, 156.5 ), Vector2( 1415, 160 ), Vector2( 1440, 175 ), Vector2( 1440, 210 ), Vector2( 1440, 820 ), Vector2( 1377, 853 ), Vector2( 1354, 856 ), Vector2( 699, 856 ), Vector2( 686, 833 ), Vector2( 686, 833 ), Vector2( 679, 410 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.3, 2, 2.2, 2.5, 4, 4.3, 4.5, 6, 6.3, 6.4, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 360.0, 360.0, 52.0042, 83.2387, 87.1424, 130.69, 181.497, 181.497, 237.844, 270.985, 270.985, 326.962, 360.0, 360.0 ]
+}
+
 [node name="MenuPrincipal" type="Node"]
 script = ExtResource( 2 )
 nivel_inicial = "res://Juegos/Niveles/Nivel1.tscn"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -53.0
-margin_top = -64.0
-margin_right = 1972.0
-margin_bottom = 1141.0
-color = Color( 0, 0, 0, 1 )
 
 [node name="BotonJugar" type="Button" parent="."]
 anchor_left = 0.5
@@ -39,12 +91,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -211.0
+margin_left = -209.0
 margin_top = 72.0
-margin_right = 204.0
+margin_right = 210.0
 margin_bottom = 232.0
 custom_fonts/font = SubResource( 2 )
 text = "salir"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 5 )
+anims/inicio = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 679, 410 )
+rotation = 6.28319
+texture = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_left = -53.0
+margin_top = -64.0
+margin_right = 1972.0
+margin_bottom = 1141.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="StarFieldBackground" parent="." instance=ExtResource( 4 )]
 
 [connection signal="pressed" from="BotonJugar" to="." method="_on_BotonJugar_pressed"]
 [connection signal="pressed" from="BotonSalir" to="." method="_on_BotonSalir_pressed"]

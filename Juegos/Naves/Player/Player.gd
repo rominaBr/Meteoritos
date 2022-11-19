@@ -30,6 +30,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not esta_input_activo():
 		return
+	
 		
 	#Disparo Rayo
 	if event.is_action_pressed("disparo_secundario"):

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://icono_juego.png" type="Texture" id=1]
 [ext_resource path="res://Juegos/UI/HUD.gd" type="Script" id=2]
 [ext_resource path="res://Juegos/UI/ContenedorInformacion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juegos/UI/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juegos/UI/MiniMapa/MiniMapa.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juegos/UI/tiempo_limite.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -86,6 +87,49 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.95, 0.04, 0.04, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "tiempo_limite"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.95, 0.04, 0.04, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
 
@@ -116,14 +160,12 @@ stretch_mode = 2
 anims/fade_in = SubResource( 1 )
 
 [node name="InfoZonaRecarga" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 1 )
 margin_left = 12.0
 margin_top = 14.0
 margin_right = 209.0
 margin_bottom = 96.0
 
 [node name="InfoMeteoritos" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 1 )
 margin_left = 15.0
 margin_top = 968.0
 margin_right = 226.0
@@ -143,11 +185,15 @@ margin_bottom = 101.0
 text = "METEORITOS RESTANTES 2"
 
 [node name="InfoTiempoRestante" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 1 )
+modulate = Color( 0.95, 0.04, 0.04, 1 )
 margin_left = 1688.0
 margin_top = 23.0
 margin_right = 1902.0
 margin_bottom = 136.0
+
+[node name="AnimationPlayer" parent="InfoTiempoRestante" index="0"]
+anims/RESET = SubResource( 6 )
+anims/tiempo_limite = SubResource( 7 )
 
 [node name="Label" parent="InfoTiempoRestante" index="1"]
 margin_left = 28.0
@@ -156,7 +202,11 @@ margin_right = 185.0
 margin_bottom = 94.0
 text = "tiempo restante mm:ss"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InfoTiempoRestante"]
+stream = ExtResource( 6 )
+
 [node name="InfoEscudo" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 1656.0
 margin_top = 896.0
 margin_right = 1910.0
@@ -165,10 +215,14 @@ margin_bottom = 978.0
 [node name="Label" parent="InfoEscudo" index="1"]
 text = "ENERGÍA ESCUDO"
 
+[node name="AutoOcultarTimer" parent="InfoEscudo" index="2"]
+autostart = false
+
 [node name="ProgressBar" parent="InfoEscudo" index="3"]
 value = 100.0
 
 [node name="InfoLaser" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 1656.0
 margin_top = 985.0
 margin_right = 1910.0

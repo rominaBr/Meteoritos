@@ -94,16 +94,18 @@ func modificar_posicion_iconos() -> void:
 	for item in items_mini_mapa:
 		var item_icono:Sprite = items_mini_mapa[item]
 		var offset_pos:Vector2 = item.position - player.position
-		var pos_icono:Vector2 = offset_pos * escala_grilla + (zona_renderizado.rect_size * 0.5)
-		pos_icono.x = clamp(pos_icono.x, 0 , zona_renderizado.rect_size.x)
-		pos_icono.y = clamp(pos_icono.y, 0, zona_renderizado.rect_size.y)
-		item_icono.position = pos_icono
+		#var pos_icono:Vector2 = offset_pos * escala_grilla + (zona_renderizado.rect_size * 0.5)
+		var pos_icono:Vector2 = offset_pos * escala_grilla + icono_player.position
 		
 		if zona_renderizado.get_rect().has_point(pos_icono - zona_renderizado.rect_position):
 			item_icono.scale = Vector2(0.5, 0.5)
 		else:
 			item_icono.scale = Vector2(0.3, 0.3)
 
+		pos_icono.x = clamp(pos_icono.x, 0 , zona_renderizado.rect_size.x)
+		pos_icono.y = clamp(pos_icono.y, 0, zona_renderizado.rect_size.y)
+		item_icono.position = pos_icono
+		
 func quitar_icono(objeto:Node2D) -> void:
 	if objeto in items_mini_mapa:
 		items_mini_mapa[objeto].queue_free()

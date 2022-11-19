@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tiempo_limite.ogg-6e5ef44ef39938e8dcb9b78320e1d7bb.oggstr"
+
+[deps]
+
+source_file="res://Juegos/UI/tiempo_limite.ogg"
+dest_files=[ "res://.import/tiempo_limite.ogg-6e5ef44ef39938e8dcb9b78320e1d7bb.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

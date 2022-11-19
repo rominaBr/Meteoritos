@@ -5,37 +5,47 @@
 [ext_resource path="res://Juegos/Peligros/SectorDePeligro.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juegos/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=4]
 
-[node name="Nivel2" instance=ExtResource( 1 )]
-tiempo_limite = 80
-prox_nivel = "res://Juegos/Niveles/Nivel3.tscn"
+[node name="Nivel3" instance=ExtResource( 1 )]
+tiempo_transicion_camara = 7
+tiempo_limite = 100
+prox_nivel = "res://Juegos/Niveles/Nivel4.tscn"
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 3 )]
-position = Vector2( 3168, 153 )
-numero_peligros = 5
+position = Vector2( 2178, -881 )
+numero_peligros = 6
+
+[node name="SectorDePeligro2" parent="TriggersLluviaMeteoritos" index="1" instance=ExtResource( 3 )]
+position = Vector2( -2755, -1491 )
+numero_peligros = 6
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 2 )]
-position = Vector2( -831, -729 )
+position = Vector2( -2178, 17 )
 
 [node name="EstacionRecarga2" parent="ContenedorEstaciones" index="1" instance=ExtResource( 2 )]
-position = Vector2( 2720, 1170 )
+position = Vector2( 3832, 8 )
 
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 4 )]
-position = Vector2( -903, 1074 )
-numero_orbitales = 7
+position = Vector2( 4259, -1571 )
+numero_orbitales = 8
 
-[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 4 )]
-position = Vector2( 5376, 2428 )
-numero_orbitales = 7
+[node name="BaseEnemiga3" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 4 )]
+position = Vector2( 1677, 3458 )
+numero_orbitales = 8
 
 [node name="SectorDePeligro" parent="TriggersInterceptores" index="0" instance=ExtResource( 3 )]
-position = Vector2( 1708, -1114 )
+position = Vector2( -1420, 2567 )
 tipo_peligro = "Enemigo"
-numero_peligros = 3
+numero_peligros = 4
+
+[node name="SectorDePeligro2" parent="TriggersInterceptores" index="1" instance=ExtResource( 3 )]
+position = Vector2( 4772, 1117 )
+tipo_peligro = "Enemigo"
+numero_peligros = 4
 
 [node name="StarFieldBackground" parent="." index="10"]
-color_fondo = Color( 0.196078, 0.0745098, 0.439216, 1 )
+color_fondo = Color( 0.25098, 0.0196078, 0.286275, 1 )
 
 [node name="Player" parent="." index="11"]
-hitpoints = 30.0
+hitpoints = 50.0
 potencia_motor = 25
 estela_maxima = 250

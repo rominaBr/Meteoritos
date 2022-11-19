@@ -54,7 +54,7 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	state.set_transform(mi_transform)
 	esta_en_sector = true
 	
-##Métodos Custom
+## Métodos Custom
 func recibir_danio(danio:float) -> void:	
 	hitpoints -= danio
 	if hitpoints <= 0 and not esta_destruido:

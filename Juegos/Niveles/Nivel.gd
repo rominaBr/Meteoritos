@@ -44,6 +44,10 @@ func _ready() -> void:
 	player = DatosJuego.get_player_actual()
 	actualizador_timer.start()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("salir"):
+		get_tree().quit()
+
 ## Medodos custom
 func conectar_seniales() -> void:
 	Eventos.connect("disparo", self, "_on_disparo")
