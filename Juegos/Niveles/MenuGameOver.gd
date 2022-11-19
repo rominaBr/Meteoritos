@@ -3,6 +3,7 @@ extends Node
 
 func _ready() -> void:
 	MusicaJuego.play_musica_game_over()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _on_BotonPrincipal_pressed() -> void:

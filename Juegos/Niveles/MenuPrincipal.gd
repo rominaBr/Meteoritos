@@ -6,6 +6,7 @@ func _ready() -> void:
 	$AnimationPlayer.play("inicio")
 	OS.set_window_fullscreen(true)
 	MusicaJuego.play_musica(MusicaJuego.get_lista_musicas().menu_principal)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("salir"):
